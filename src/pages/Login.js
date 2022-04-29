@@ -6,9 +6,6 @@ function Login() {
 
   const { login } = useUserContext()
 
-  // reemplazar con logica de login, y redirigir a '/'
-  // aplicar context para guardar el estado y usarlo en otros componentes
-
   return (
     <div>
         LOGIN

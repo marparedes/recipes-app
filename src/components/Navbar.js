@@ -49,13 +49,13 @@ const userSettings = [
     page: ''
   },
   {
-    title: 'logout',
+    title: 'Cerrar Sesión',
     page: ''
   }
 ];
 
-// 
-// para pantallas chicas agregar un IconButton
+// TODO fijarme de agregar pagina de explicaciones
+// TODO para pantallas chicas agregar un IconButton
 
 const Navbar = () => {
 

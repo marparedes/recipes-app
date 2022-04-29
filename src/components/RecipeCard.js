@@ -20,8 +20,8 @@ export const RecipeCard = ({ id, title, image, prepTime }) => {
             species, ranging across all continents except Antarctica
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small">Ver Más</Button>
+        <CardActions style={{justifyContent: 'center'}}>
+          <Button size="large">Ver Más</Button>
         </CardActions>
       </Card>
     </Grid>

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { RecipeList } from '../components/RecipeList'
 import recipesMock from '../mock/recipes'
 
-// busqueda
-// listado de recetas (cards)
+// TODO busqueda por filtros 
 function Home() {
 
     const [recipes, setRecipes] = useState([])

@@ -7,7 +7,13 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import { UserProvider } from './components/UserContext'
+import PrivateRoute from './components/PrivateRoute';
 
+
+// TODO misma logica de privateroute con register
+// TODO hacer otro componente
+
+// TODO componente de Ayuda /help
 function App() {
   return (
     <BrowserRouter>
@@ -18,7 +24,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/profile' element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            } />
             {/* <Route path='recipes' element={}>
               <Route path=':recipeId' element={}/>
               <Route path='new' element={}/>
