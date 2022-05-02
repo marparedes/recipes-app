@@ -1,0 +1,52 @@
+.box {
+    height: 300px;
+    margin: auto;
+    width: 80%;
+}
+
+.page-title {
+    margin: 30px;
+    text-align: center;
+}
+
+.create-recipe {
+    margin-top: 30px;
+}
+
+.form-field {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.field-name {
+    font-size: 18px;
+}
+
+.form-select-field {
+    min-width: 200px;
+    width: 20%;
+}
+
+.form-text-area {
+    min-width: 200px;
+    width: 50%;
+}
+
+.form-text-field {
+    min-width: 200px;
+    width: 30%;
+}
+
+.recipe-name-field {
+    margin-right: 10%;
+}
+
+.recipe-name-field, .recipe-difficulty-field {
+    margin-right: 10%;
+}
+
+.save-button {
+    background-color: blue !important;
+    margin-bottom: 30px !important;
+    margin-top: 30px !important;
+}
