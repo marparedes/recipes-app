@@ -23,8 +23,8 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!((user === 'foo') && (password === 'bar'))) {
-      setErrorMessage("Credenciales incorrectas");
+    if (!((user === 'hsimpson') && (password === '123'))) {
+      setErrorMessage("No se encontró ningún usuario con esas credenciales");
       return;
     }
     const id = "userId";
