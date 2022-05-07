@@ -61,7 +61,7 @@ const Navbar = () => {
 
   let navigate = useNavigate()
 
-  const { user } = useUserContext()
+  const { user } = useUserContext();
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -144,13 +144,13 @@ const Navbar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, paddingLeft: "150px" }}>
-            {pages.map((page) => (
+            {pages.map((option) => (
               <Button
-                key={page.title}
-                onClick={handleCloseNavMenu}
+                key={option.title}
+                onClick={()=> navigate(`/${option.page}`)}
                 sx={{ my: 2, mx: 1, color: 'white', display: 'block' }}
               >
-                {page.title}
+                {option.title}
               </Button>
             ))}
           </Box>
