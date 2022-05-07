@@ -15,7 +15,6 @@ function Login() {
 
   const [errorMessage, setErrorMessage] = useState('');
   const [password, setPassword] = useState('');
-  const [success, setSuccess] = useState(false);
   const [user, setUser] = useState('');
 
   useEffect(() => {
@@ -25,11 +24,9 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!((user === 'foo') && (password === 'bar'))) {
-      console.log("FAIL");
       setErrorMessage("Credenciales incorrectas");
       return;
     }
-    setSuccess(true);
     const id = "userId";
     setUser('');
     setPassword('');
@@ -49,7 +46,7 @@ function Login() {
       }}>
         <form onSubmit={handleSubmit}>
           <div className={'form-text-field'}>
-            <p className={'field-name'}>Nombre</p>
+            <p className={'field-name'}>Nombre de usuario</p>
             <TextField className={'form-field'}
                        id="username"
                        ref={userRef}
