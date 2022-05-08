@@ -2,7 +2,7 @@ import React from 'react'
 import { Navigate } from 'react-router-dom'
 import { useUserContext } from './UserContext'
 
-const PrivateRoute = (children) => {
+const PrivateRoute = ({ children }) => {
 
   const {user} = useUserContext()
   

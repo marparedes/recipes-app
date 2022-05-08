@@ -47,10 +47,6 @@ const userSettings = [
   {
     title: 'Mis recetas',
     page: ''
-  },
-  {
-    title: 'Cerrar Sesión',
-    page: ''
   }
 ];
 
@@ -61,7 +57,7 @@ const Navbar = () => {
 
   let navigate = useNavigate()
 
-  const { user } = useUserContext();
+  const { user, logout } = useUserContext();
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -180,10 +176,19 @@ const Navbar = () => {
                 onClose={handleCloseUserMenu}
               >
                 {userSettings.map((setting) => (
-                  <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting.title} onClick={()=> {
+                    handleCloseUserMenu();
+                    navigate(`/${setting.page}`);
+                  }}>
                     <Typography textAlign="center">{setting.title}</Typography>
                   </MenuItem>
                 ))}
+                <MenuItem key="Cerrar Sesión" onClick={() => {
+                  handleCloseUserMenu();
+                  logout();
+                }}>
+                  <Typography textAlign="center">Cerrar Sesión</Typography>
+                </MenuItem>
               </Menu> </> :
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {options.map((option) => (
