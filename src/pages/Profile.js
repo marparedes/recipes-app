@@ -17,7 +17,6 @@ function Profile() {
   const userRef = useRef();
 
   const [errorMessage, setErrorMessage] = useState('');
-  const [errorPasswordMessage, setErrorPasswordMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [successPasswordMessage, setSuccessPasswordMessage] = useState('');
 
@@ -83,13 +82,11 @@ function Profile() {
   }
 
   const submitPasswordForm = async (e) => {
-    setErrorPasswordMessage('');
     setSuccessPasswordMessage('');
     e.preventDefault();
     const errors = handlePasswordSubmit(e);
     console.log(errors);
     if (Object.keys(errors).length) {
-      setErrorPasswordMessage('Hay campos con errores!');
       return;
     }
     setSuccessPasswordMessage('¡La contraseña fue cambiada!');
@@ -165,7 +162,6 @@ function Profile() {
             </div>
             <span style={{ color: "red" }}>{passwordErrors["password"]}</span>
             <br></br>
-            <p className="error-message" hidden={!errorPasswordMessage} ref={errRef} aria-live="assertive">{errorPasswordMessage}</p>
             <p className="success-message" hidden={!successPasswordMessage} ref={successPasswordRef} aria-live="assertive">{successPasswordMessage}</p>
             <Button type="submit" variant="contained" className={'save-button'}>Guardar cambios</Button>
           </form>
