@@ -5,6 +5,7 @@
 }
 
 .page-title {
+    font-size: 32px;
     margin: 30px;
     text-align: center;
 }
@@ -68,4 +69,15 @@
     font-size: 20px;
     margin: 0;
     margin-top: 10px;
+}
+
+.profile-section {
+    display: inline-block;
+    height: auto;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.separator {
+    margin-top:30px;
 }
