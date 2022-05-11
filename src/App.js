@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import { UserProvider } from './components/UserContext'
 import PrivateRoute from './components/PrivateRoute';
 import CreateRecipe from './pages/CreateRecipe';
+import Recipe from './pages/Recipe';
 
 
 // TODO misma logica de privateroute con register
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/recipes/:id' element={<Recipe />} />
             <Route path='/profile' element={
               <PrivateRoute>
                 <Profile />

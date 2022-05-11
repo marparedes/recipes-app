@@ -21,7 +21,7 @@ export const RecipeCard = ({ id, title, image, prepTime }) => {
           </Typography>
         </CardContent>
         <CardActions style={{justifyContent: 'center'}}>
-          <Button size="large">Ver Más</Button>
+          <Button href={`recipes/${id}`} size="large">Ver Más</Button>
         </CardActions>
       </Card>
     </Grid>
