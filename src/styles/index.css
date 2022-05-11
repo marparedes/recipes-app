@@ -4,6 +4,10 @@
     width: 80%;
 }
 
+.recipe-card-field {
+    font-size: 18px;
+}
+
 .page-title {
     margin: 30px;
     text-align: center;
@@ -84,8 +88,6 @@
 .recipe-details-half {
     display: inline-block;
     margin: 20px;
-    /*max-width: 50%;*/
-    /*width: 50%;*/
     word-break : break-word;
 }
 
@@ -103,7 +105,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin: 75px 0;
     position: relative;
 }
 
