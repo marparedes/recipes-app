@@ -6,10 +6,12 @@ import '../styles/index.css';
 import { Box } from '@mui/system';
 import { useNavigate } from "react-router-dom";
 import useForm from './useForm';
+import usersMock from '../mock/users';
 
 function Profile() {
   const { login } = useUserContext()
   const history = useNavigate();
+  const userData = usersMock[0];
 
   const errRef = useRef();
   const successRef = useRef();
@@ -54,9 +56,9 @@ function Profile() {
   }
   const { handleChange, values, handleSubmit, errors } = useForm(
     {
-      username: '',
-      first_name: '',
-      last_name: ''
+      username: userData.username,
+      first_name: userData.first_name,
+      last_name: userData.last_name
     },
     handleValidation
   );
