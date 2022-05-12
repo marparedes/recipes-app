@@ -42,6 +42,11 @@ function Register() {
       allErrors.last_name = 'Se requiere un apellido';
     }
 
+    // Last name
+    if (!values.phone_number) {
+      allErrors.phone_number = 'Se requiere un número de teléfono';
+    }
+
     // Email
     if (!values.email) {
       allErrors.email = 'Se requiere un email';
@@ -61,6 +66,7 @@ function Register() {
       password: '',
       first_name: '',
       last_name: '',
+      phone_number: '',
       email: ''
     },
     handleValidation
@@ -130,6 +136,16 @@ function Register() {
             />
           </div>
           <span style={{ color: "red" }}>{errors["last_name"]}</span>
+
+          <div className={'form-text-field'}>
+            <p className={'field-name'}>Número de teléfono</p>
+            <TextField className={'form-field'}
+                       id="phone-number"
+                       onChange={(e) => { handleChange({ name: 'phone_number', value: e.target.value}); }}
+                       value={values.phone_number}
+            />
+          </div>
+          <span style={{ color: "red" }}>{errors["phone_number"]}</span>
 
           <div className={'form-text-field'}>
             <p className={'field-name'}>Email</p>

@@ -4,7 +4,8 @@ const usersMock = [
     "username": "hsimpson",
     "email": "hsimpson@gmail.com",
     "first_name": "Homero",
-    "last_name": "Simpson"
+    "last_name": "Simpson",
+    "phone_number": "+541161234567"
   }
 ]
 

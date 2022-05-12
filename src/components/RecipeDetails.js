@@ -5,7 +5,6 @@ import ImageSlider from './ImageSlider';
 
 
 export const RecipeDetails = ({recipe}) => {
-  console.log(recipe);
   return (
     <Box sx={{ flexGrow: 1, margin:"20px" }} >
       <h2 className="page-title">{recipe.title}</h2>
