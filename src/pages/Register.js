@@ -96,6 +96,16 @@ function Register() {
       }}>
         <form onSubmit={submitForm}>
           <div className={'form-text-field'}>
+            <p className={'field-name'}>Email</p>
+            <TextField className={'form-field'}
+                       id="email"
+                       onChange={(e) => { handleChange({ name: 'email', value: e.target.value }); }}
+                       value={values.email}
+            />
+          </div>
+          <p className={errors.email ? "error-message centered-text" : "hidden"}>{errors.email}</p>
+
+          <div className={'form-text-field'}>
             <p className={'field-name'}>Nombre de usuario</p>
             <TextField className={'form-field'}
               id="username"
@@ -104,7 +114,7 @@ function Register() {
               value={values.username}
             />
           </div>
-          <span style={{ color: "red" }}>{errors.username}</span>
+          <p className={errors.username ? "error-message centered-text" : "hidden"}>{errors.username}</p>
 
           <div className={'form-text-field'}>
             <p className={'field-name'}>Contraseña</p>
@@ -115,7 +125,7 @@ function Register() {
               value={values.password}
             />
           </div>
-          <span style={{ color: "red" }}>{errors["password"]}</span>
+          <p className={errors.password ? "error-message centered-text" : "hidden"}>{errors.password}</p>
 
           <div className={'form-text-field'}>
             <p className={'field-name'}>Nombre</p>
@@ -125,7 +135,7 @@ function Register() {
               value={values.first_name}
             />
           </div>
-          <span style={{ color: "red" }}>{errors["first_name"]}</span>
+          <p className={errors.first_name ? "error-message centered-text" : "hidden"}>{errors.first_name}</p>
 
           <div className={'form-text-field'}>
             <p className={'field-name'}>Apellido</p>
@@ -135,7 +145,7 @@ function Register() {
               value={values.last_name}
             />
           </div>
-          <span style={{ color: "red" }}>{errors["last_name"]}</span>
+          <p className={errors.last_name ? "error-message centered-text" : "hidden"}>{errors.last_name}</p>
 
           <div className={'form-text-field'}>
             <p className={'field-name'}>Número de teléfono</p>
@@ -145,19 +155,9 @@ function Register() {
               value={values.phone_number}
             />
           </div>
-          <span style={{ color: "red" }}>{errors["phone_number"]}</span>
-
-          <div className={'form-text-field'}>
-            <p className={'field-name'}>Email</p>
-            <TextField className={'form-field'}
-              id="email"
-              onChange={(e) => { handleChange({ name: 'email', value: e.target.value }); }}
-              value={values.email}
-            />
-          </div>
-          <span style={{ color: "red" }}>{errors["email"]}</span>
+          <p className={errors.phone_number ? "error-message centered-text" : "hidden"}>{errors.phone_number}</p>
           <br></br>
-          <p className="error-message" hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</p>
+          <p className={errorMessage ? "error-message centered-text" : "hidden"} ref={errRef} aria-live="assertive">{errorMessage}</p>
           <div className='form-button'>
             <Button type="submit" variant="contained" className={'save-button'}>Crear usuario</Button>
           </div>

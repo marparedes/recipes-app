@@ -66,7 +66,7 @@ function Login() {
               required={true}
             />
           </div>
-          <Typography className="error-message" hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</Typography>
+          <Typography className={errorMessage ? "error-message centered-text" : "hidden"} hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</Typography>
           <Link to={"/password-recovery"}>
             <Typography sx={{ textAlign: "center", marginTop: "15px" }}>¿Olvidaste tu contraseña?</Typography>
           </Link>
