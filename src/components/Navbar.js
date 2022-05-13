@@ -20,10 +20,6 @@ const pages = [
     page: ''
   },
   {
-    title: 'Recetas',
-    page: 'recipes'
-  },
-  {
     title: 'Contacto',
     page: 'contact'
   }
@@ -46,7 +42,7 @@ const userSettings = [
   },
   {
     title: 'Mis recetas',
-    page: ''
+    page: 'my-recipes'
   }
 ];
 

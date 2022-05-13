@@ -10,6 +10,7 @@ import { UserProvider } from './components/UserContext'
 import PrivateRoute from './components/PrivateRoute';
 import CreateRecipe from './pages/CreateRecipe';
 import Recipe from './pages/Recipe';
+import MyRecipes from './pages/MyRecipes';
 
 
 // TODO misma logica de privateroute con register
@@ -30,6 +31,11 @@ function App() {
             <Route path='/profile' element={
               <PrivateRoute>
                 <Profile />
+              </PrivateRoute>
+            } />
+            <Route path='/my-recipes' element={
+              <PrivateRoute>
+                <MyRecipes />
               </PrivateRoute>
             } />
             <Route path='/my-recipes/new' element={ // TODO: se podría mover a "Mis Recetas" cuando esa sección sea implementada
