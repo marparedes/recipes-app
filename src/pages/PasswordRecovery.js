@@ -21,7 +21,6 @@ export const PasswordRecovery = () => {
     setEmailIsCorrect(true)
   }
 
-
   return <>
     <div>
       <Typography variant='h4' sx={{ margin: 10, textAlign: "center" }}>Recupera tu contraseña</Typography>
@@ -46,7 +45,7 @@ export const PasswordRecovery = () => {
 
             <Typography className="error-message" hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</Typography>
             <div className='recovery-button'>
-              <Button type="submit" variant="contained">Iniciar Sesion</Button>
+              <Button type="submit" variant="contained">Enviar</Button>
             </div>
           </form>
         </Box> : <>

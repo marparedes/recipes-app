@@ -26,7 +26,7 @@ const recipesMock = [
           "Cubre la base de un recipiente con rodajas de carne y añade la salsa saludable que has preparado. Agrega otra capa de carne y más salsa, continúa hasta utilizar toda la carne. De esta manera, quedará cubierta de forma pareja con la salsa. Y, si tienes la posibilidad, tapa el recipiente y guárdalo en la heladera durante una noche. Se impregnará más de sabor y tu vitel toné con atún será aún más rico. Si no guárdalo en la heladera por 1 o 2 horas para servirlo bien frío.",
         difficulty: 5,
         category: "Carnes",
-        author: "author_name",
+        author: "hsimpson",
         score: 5,
         publish: true,
         images: ["https://t1.rg.ltmcdn.com/es/posts/2/9/6/vitel_tone_light_75692_paso_2_600.webp", "https://t2.rg.ltmcdn.com/es/posts/2/9/6/vitel_tone_light_75692_600.jpg", "https://t2.rg.ltmcdn.com/es/posts/2/9/6/vitel_tone_light_75692_paso_1_600.webp"]
@@ -79,7 +79,7 @@ const recipesMock = [
           "Hornea durante aproximadamente 1 hora.",
         difficulty: 4,
         category: "Vegetariano",
-        author:"author_name",
+        author:"hsimpson",
         score: 4,
         images: ["https://t1.rg.ltmcdn.com/es/posts/0/9/6/wellington_vegano_75690_600.jpg", "https://t1.rg.ltmcdn.com/es/posts/0/9/6/wellington_vegano_75690_paso_6_600.webp"]
     },
@@ -121,7 +121,7 @@ const recipesMock = [
           "Añade las rodajas de pan por encima de la sopa y déjalo unos minutos para que quede el pan blandito. También puedes remover la sopa de tomate con pan y mezclar todo. Seguido, añade unas hojas de hierbabuena en el cado, esto es opcional.",
         difficulty: 5,
         category: "Sopa",
-        author:"author_name",
+        author:"hsimpson",
         score: 3.5,
         images: ["https://t1.rg.ltmcdn.com/es/posts/6/1/9/sopa_de_tomate_gaditana_75916_paso_7_600.webp"]
     },
@@ -156,7 +156,7 @@ const recipesMock = [
           "Añade el chocolate sobre el relleno de la chocotorta, como segunda tapa de tus alfajores y llévalo al frío nuevamente para que se seque. Cuando esté frío, desmolda y disfruta de estos deliciosos alfajores chocotorta.",
         difficulty: 5,
         category: "Postre",
-        author: "author_name",
+        author: "hsimpson",
         score: 5,
         images: ["https://t1.rg.ltmcdn.com/es/posts/9/3/9/alfajor_de_chocotorta_75939_600.jpg", "https://t1.rg.ltmcdn.com/es/posts/9/3/9/alfajor_de_chocotorta_75939_paso_6_600.webp"]
     },
@@ -201,7 +201,7 @@ const recipesMock = [
           "Mezcla toda la ensalada y agrega el huevo al final.",
         difficulty: 2,
         category: "Ensalada",
-        author: "author_name",
+        author: "hsimpson",
         score: 4.5,
         images: ["https://t1.rg.ltmcdn.com/es/posts/2/2/4/ensalada_rusa_dominicana_75422_600.jpg"]
     },
