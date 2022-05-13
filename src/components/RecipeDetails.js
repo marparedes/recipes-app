@@ -8,7 +8,7 @@ export const RecipeDetails = ({recipe}) => {
   return (
     <Box sx={{ flexGrow: 1, margin:"20px" }} >
       <h2 className="page-title">{recipe.title}</h2>
-      <div style={{ display: "flex", "flex-wrap": "wrap", "justify-content": "center", width: "100%" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", width: "100%" }}>
         <div className="half-container">
           <div className="recipe-details-half">
             <p className="one-line-recipe-field"><strong>Autor:</strong> {recipe.author}</p>
@@ -25,7 +25,7 @@ export const RecipeDetails = ({recipe}) => {
                 <p>{recipe.ingredients}</p>
               </section>
               <section>
-                <h2 className="recipe-details-title">Procedimientoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</h2>
+                <h2 className="recipe-details-title">Procedimiento</h2>
                 {recipe.procedure.split('\n').map(e => <p>{ e }</p>)}
               </section>
             </div>

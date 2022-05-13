@@ -1,9 +1,18 @@
+import { useParams } from 'react-router-dom'
 import { RecipeDetails } from '../components/RecipeDetails'
 import recipesMock from '../mock/recipes'
 
 function Recipe() {
+
+  const { id } = useParams()
+
+  const getRecipeById = () => {
+    var filtered = recipesMock.find(recipe => recipe.id === parseInt(id))
+    return filtered
+  }
+
   return (
-    <RecipeDetails recipe={recipesMock[0]}></RecipeDetails>
+    <RecipeDetails recipe={getRecipeById()}></RecipeDetails>
   )
 }
 

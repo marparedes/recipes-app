@@ -77,7 +77,7 @@ const recipesMock = [
           "\n" +
           "7\n" +
           "Hornea durante aproximadamente 1 hora.",
-        difficulty: 5,
+        difficulty: 4,
         category: "Vegetariano",
         author:"author_name",
         score: 4,
@@ -199,7 +199,7 @@ const recipesMock = [
           "\n" +
           "10\n" +
           "Mezcla toda la ensalada y agrega el huevo al final.",
-        difficulty: 5,
+        difficulty: 2,
         category: "Ensalada",
         author: "author_name",
         score: 4.5,
@@ -243,7 +243,7 @@ const recipesMock = [
           "Divide meatloaves, mashed potatoes, and roasted carrots between plates.\n" +
           "Sprinkle with scallion greens and serve with remaining ketchup glaze on the side for dipping.",
         difficulty: 4,
-        category: "Carne",
+        category: "Carnes",
         author: "hsimpson",
         score: 4.5,
         images: ["https://www.themealdb.com/images/media/meals/o2wb6p1581005243.jpg", "https://www.themealdb.com//images//media//meals//8x09hy1560460923.jpg"]

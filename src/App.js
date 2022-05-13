@@ -12,6 +12,7 @@ import CreateRecipe from './pages/CreateRecipe';
 import Recipe from './pages/Recipe';
 import MyRecipes from './pages/MyRecipes';
 import EditRecipe from './pages/EditRecipe';
+import { PasswordRecovery } from './pages/PasswordRecovery';
 
 
 // TODO misma logica de privateroute con register
@@ -29,6 +30,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/recipes/:id' element={<Recipe />} />
+            <Route path='/password-recovery' element={<PasswordRecovery />} />
             <Route path='/profile' element={
               <PrivateRoute>
                 <Profile />

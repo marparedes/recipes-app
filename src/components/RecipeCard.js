@@ -1,5 +1,6 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/index.css';
 
 export const RecipeCard = ({ id, title, image, category, score, difficulty }) => {
@@ -22,8 +23,10 @@ export const RecipeCard = ({ id, title, image, category, score, difficulty }) =>
             <p className="recipe-card-field"><strong>Dificultad:</strong> {difficulty}</p>
           </CardContent>
         </div>
-        <CardActions style={{justifyContent: 'center'}}>
-          <Button href={`recipes/${id}`} size="large">Ver Más</Button>
+        <CardActions style={{ justifyContent: 'center' }}>
+          <Link to={`/recipes/${id}`} style={{ textDecoration: 'none' }}>
+            <Button size="large">Ver Más</Button>
+          </Link>
         </CardActions>
       </Card>
     </Grid>

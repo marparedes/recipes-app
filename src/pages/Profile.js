@@ -4,13 +4,11 @@ import { useUserContext } from '../components/UserContext'
 import { TextField } from '@mui/material';
 import '../styles/index.css';
 import { Box } from '@mui/system';
-import { useNavigate } from "react-router-dom";
 import useForm from './useForm';
 import usersMock from '../mock/users';
 
 function Profile() {
   const { login } = useUserContext()
-  const history = useNavigate();
   const userData = usersMock[0];
 
   const errRef = useRef();
@@ -80,7 +78,7 @@ function Profile() {
     }
     setSuccessMessage('¡Los cambios fueron guardados!');
     login({ id: 'userId', user: values.username });
-    handleChange({ name: 'password', value: ''})
+    handleChange({ name: 'password', value: '' })
   }
 
   const submitPasswordForm = async (e) => {
@@ -92,7 +90,7 @@ function Profile() {
       return;
     }
     setSuccessPasswordMessage('¡La contraseña fue cambiada!');
-    handlePasswordChange({ name: 'password', value: ''})
+    handlePasswordChange({ name: 'password', value: '' })
   }
 
   return (
@@ -105,14 +103,14 @@ function Profile() {
           width: '80%',
         }}>
           <h2>Cambiar datos personales</h2>
-          <form style={{height: '100%'}} onSubmit={submitForm}>
+          <form style={{ height: '100%' }} onSubmit={submitForm}>
             <div className={'form-text-field'}>
               <p className={'field-name'}>Nombre de usuario</p>
               <TextField className={'form-field'}
-                         id="username"
-                         ref={userRef}
-                         onChange={(e) => { handleChange({ name: 'username', value: e.target.value}); }}
-                         value={values.username}
+                id="username"
+                ref={userRef}
+                onChange={(e) => { handleChange({ name: 'username', value: e.target.value }); }}
+                value={values.username}
               />
             </div>
             <span style={{ color: "red" }}>{errors.username}</span>
@@ -120,9 +118,9 @@ function Profile() {
             <div className={'form-text-field'}>
               <p className={'field-name'}>Nombre</p>
               <TextField className={'form-field'}
-                         id="first-name"
-                         onChange={(e) => { handleChange({ name: 'first_name', value: e.target.value}); }}
-                         value={values.first_name}
+                id="first-name"
+                onChange={(e) => { handleChange({ name: 'first_name', value: e.target.value }); }}
+                value={values.first_name}
               />
             </div>
             <span style={{ color: "red" }}>{errors["first_name"]}</span>
@@ -130,16 +128,18 @@ function Profile() {
             <div className={'form-text-field'}>
               <p className={'field-name'}>Apellido</p>
               <TextField className={'form-field'}
-                         id="last-name"
-                         onChange={(e) => { handleChange({ name: 'last_name', value: e.target.value}); }}
-                         value={values.last_name}
+                id="last-name"
+                onChange={(e) => { handleChange({ name: 'last_name', value: e.target.value }); }}
+                value={values.last_name}
               />
             </div>
             <span style={{ color: "red" }}>{errors["last_name"]}</span>
             <br></br>
             <p className="error-message" hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</p>
             <p className="success-message" hidden={!successMessage} ref={successRef} aria-live="assertive">{successMessage}</p>
-            <Button type="submit" variant="contained" className={'save-button'}>Guardar cambios</Button>
+            <div className='form-button'>
+              <Button type="submit" variant="contained" className={'save-button'}>Guardar cambios</Button>
+            </div>
           </form>
         </Box>
       </div>
@@ -156,16 +156,18 @@ function Profile() {
             <div className={'form-text-field'}>
               <p className={'field-name'}>Contraseña</p>
               <TextField className={'form-field'}
-                         id="password"
-                         type="password"
-                         onChange={(e) => { handlePasswordChange({ name: 'password', value: e.target.value}); }}
-                         value={passwordValues.password}
+                id="password"
+                type="password"
+                onChange={(e) => { handlePasswordChange({ name: 'password', value: e.target.value }); }}
+                value={passwordValues.password}
               />
             </div>
             <span style={{ color: "red" }}>{passwordErrors["password"]}</span>
             <br></br>
             <p className="success-message" hidden={!successPasswordMessage} ref={successPasswordRef} aria-live="assertive">{successPasswordMessage}</p>
-            <Button type="submit" variant="contained" className={'save-button'}>Guardar cambios</Button>
+            <div className='form-button'>
+              <Button type="submit" variant="outlined" >Guardar cambios</Button>
+            </div>
           </form>
         </Box>
       </div>

@@ -1,10 +1,10 @@
 import Button from '@mui/material/Button'
 import React, { useEffect, useRef, useState } from 'react'
 import { useUserContext } from '../components/UserContext'
-import { TextField } from '@mui/material';
+import { TextField, Typography } from '@mui/material';
 import '../styles/index.css';
 import { Box } from '@mui/system';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const { login } = useUserContext()
@@ -15,29 +15,29 @@ function Login() {
 
   const [errorMessage, setErrorMessage] = useState('');
   const [password, setPassword] = useState('');
-  const [user, setUser] = useState('');
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     userRef.current.focus();
-  }, [user, password]);
+  }, [email, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!((user === 'hsimpson') && (password === '123'))) {
+    if (!((email === 'hsimpson@gmail.com') && (password === '123'))) {
       setErrorMessage("No se encontró ningún usuario con esas credenciales");
       return;
     }
     const id = "userId";
-    setUser('');
+    setEmail('');
     setPassword('');
     setErrorMessage('');
-    login({id, user})
+    login({ id, email })
     history('/');
   }
 
   return (
     <div className={'login-form'}>
-      <h2 className={'page-title'}>Iniciar sesión</h2>
+      <Typography variant='h3' className={'page-title'}>Iniciar sesión</Typography>
 
       <Box className={'box'} sx={{
         height: 300,
@@ -46,29 +46,33 @@ function Login() {
       }}>
         <form onSubmit={handleSubmit}>
           <div className={'form-text-field'}>
-            <p className={'field-name'}>Nombre de usuario</p>
+            <p className={'field-name'}>E-mail</p>
             <TextField className={'form-field'}
-                       id="username"
-                       ref={userRef}
-                       onChange={(e) => setUser(e.target.value)}
-                       value={user}
-                       required={true}
+              id="email"
+              ref={userRef}
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              required={true}
             />
           </div>
 
           <div className={'form-text-field'}>
             <p className={'field-name'}>Contraseña</p>
             <TextField className={'form-field'}
-                       id="password"
-                       type="password"
-                       onChange={(e) => setPassword(e.target.value)}
-                       value={password}
-                       required={true}
+              id="password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required={true}
             />
           </div>
-          <br></br>
-          <p className="error-message" hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</p>
-          <Button type="submit" variant="contained" className={'save-button'}>Iniciar Sesion</Button>
+          <Typography className="error-message" hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</Typography>
+          <Link to={"/password-recovery"}>
+            <Typography sx={{ textAlign: "center", marginTop: "15px" }}>¿Olvidaste tu contraseña?</Typography>
+          </Link>
+          <div className='form-button'>
+            <Button type="submit" variant="contained" className={'save-button'}>Iniciar Sesion</Button>
+          </div>
         </form>
       </Box>
     </div>

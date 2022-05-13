@@ -4,10 +4,9 @@ import React from 'react'
 import { RecipeCard } from './RecipeCard'
 
 
-export const RecipeList = ({recipes}) => {
-  
+export const RecipeList = ({ recipes }) => {
   return (
-    <Box sx={{ flexGrow: 1, margin:"20px" }} >
+    <Box sx={{ flexGrow: 1, margin: "20px" }} >
       <Grid container spacing={2} justifyContent="center">
         {recipes.map(item =>
           <RecipeCard

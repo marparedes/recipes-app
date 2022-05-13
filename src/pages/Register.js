@@ -81,7 +81,7 @@ function Register() {
     }
     const id = "userId";
     setErrorMessage('');
-    login({id, user: values.username})
+    login({ id, user: values.username })
     history('/');
   }
 
@@ -98,10 +98,10 @@ function Register() {
           <div className={'form-text-field'}>
             <p className={'field-name'}>Nombre de usuario</p>
             <TextField className={'form-field'}
-                       id="username"
-                       ref={userRef}
-                       onChange={(e) => { handleChange({ name: 'username', value: e.target.value}); }}
-                       value={values.username}
+              id="username"
+              ref={userRef}
+              onChange={(e) => { handleChange({ name: 'username', value: e.target.value }); }}
+              value={values.username}
             />
           </div>
           <span style={{ color: "red" }}>{errors.username}</span>
@@ -109,10 +109,10 @@ function Register() {
           <div className={'form-text-field'}>
             <p className={'field-name'}>Contraseña</p>
             <TextField className={'form-field'}
-                       id="password"
-                       type="password"
-                       onChange={(e) => { handleChange({ name: 'password', value: e.target.value}); }}
-                       value={values.password}
+              id="password"
+              type="password"
+              onChange={(e) => { handleChange({ name: 'password', value: e.target.value }); }}
+              value={values.password}
             />
           </div>
           <span style={{ color: "red" }}>{errors["password"]}</span>
@@ -120,9 +120,9 @@ function Register() {
           <div className={'form-text-field'}>
             <p className={'field-name'}>Nombre</p>
             <TextField className={'form-field'}
-                       id="first-name"
-                       onChange={(e) => { handleChange({ name: 'first_name', value: e.target.value}); }}
-                       value={values.first_name}
+              id="first-name"
+              onChange={(e) => { handleChange({ name: 'first_name', value: e.target.value }); }}
+              value={values.first_name}
             />
           </div>
           <span style={{ color: "red" }}>{errors["first_name"]}</span>
@@ -130,9 +130,9 @@ function Register() {
           <div className={'form-text-field'}>
             <p className={'field-name'}>Apellido</p>
             <TextField className={'form-field'}
-                       id="last-name"
-                       onChange={(e) => { handleChange({ name: 'last_name', value: e.target.value}); }}
-                       value={values.last_name}
+              id="last-name"
+              onChange={(e) => { handleChange({ name: 'last_name', value: e.target.value }); }}
+              value={values.last_name}
             />
           </div>
           <span style={{ color: "red" }}>{errors["last_name"]}</span>
@@ -140,9 +140,9 @@ function Register() {
           <div className={'form-text-field'}>
             <p className={'field-name'}>Número de teléfono</p>
             <TextField className={'form-field'}
-                       id="phone-number"
-                       onChange={(e) => { handleChange({ name: 'phone_number', value: e.target.value}); }}
-                       value={values.phone_number}
+              id="phone-number"
+              onChange={(e) => { handleChange({ name: 'phone_number', value: e.target.value }); }}
+              value={values.phone_number}
             />
           </div>
           <span style={{ color: "red" }}>{errors["phone_number"]}</span>
@@ -150,15 +150,17 @@ function Register() {
           <div className={'form-text-field'}>
             <p className={'field-name'}>Email</p>
             <TextField className={'form-field'}
-                       id="email"
-                       onChange={(e) => { handleChange({ name: 'email', value: e.target.value}); }}
-                       value={values.email}
+              id="email"
+              onChange={(e) => { handleChange({ name: 'email', value: e.target.value }); }}
+              value={values.email}
             />
           </div>
           <span style={{ color: "red" }}>{errors["email"]}</span>
           <br></br>
           <p className="error-message" hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</p>
-          <Button type="submit" variant="contained" className={'save-button'}>Crear usuario</Button>
+          <div className='form-button'>
+            <Button type="submit" variant="contained" className={'save-button'}>Crear usuario</Button>
+          </div>
         </form>
       </Box>
     </div>

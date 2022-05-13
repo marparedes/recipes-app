@@ -27,6 +27,10 @@
     width: 30%;
 }
 
+.form-button {
+    text-align: center;
+}
+
 .field-name {
     font-size: 18px;
 }
@@ -42,8 +46,13 @@
 }
 
 .form-text-field {
+    margin: 0 auto;
     min-width: 200px;
     width: 30%;
+}
+
+.login-form {
+    margin-top: 30px;
 }
 
 .recipe-name-field {
@@ -61,10 +70,10 @@
 }
 
 .error-message {
+    text-align: center;
     color: red;
-    font-size: 20px;
-    margin: 0;
-    margin-top: 10px;
+    margin-top: 20px!important;
+    padding: 20px;
 }
 
 .success-message {
@@ -79,6 +88,26 @@
     height: auto;
     margin-top: 30px;
     width: 100%;
+
+}
+.search-button {
+    margin: auto;
+}
+
+.search-container {
+    padding: 30px;
+    margin: 25px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, max-content));
+}
+
+.search-typo {
+    padding: 5px;
+    font-size: 0.875rem;
 }
 
 .separator {
@@ -119,6 +148,11 @@
     position: absolute;
     top: 50%;
     z-index: 10;
+}
+
+.recovery-button {
+    margin: 20px;
+    text-align: center;
 }
 
 .right-arrow {
