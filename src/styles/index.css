@@ -51,8 +51,22 @@
     width: 30%;
 }
 
+.footer {
+    background-color: #ED6A58;
+    color: #EEEDD6;
+    box-sizing: content-box;
+    padding: 20px;
+}
+
 .login-form {
-    margin-top: 30px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.register-form {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    min-height: 100vh;
 }
 
 .recipe-name-field {
@@ -96,7 +110,6 @@
 
 .search-container {
     padding: 30px;
-    margin: 25px;
     text-align: center;
     justify-content: center;
     align-content: center;

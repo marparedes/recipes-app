@@ -86,7 +86,7 @@ function Register() {
   }
 
   return (
-    <div className={'login-form'}>
+    <div className={'register-form'}>
       <h2 className={'page-title'}>Crear nuevo usuario</h2>
 
       <Box className={'box'} sx={{

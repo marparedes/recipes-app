@@ -20,8 +20,8 @@ const pages = [
     page: ''
   },
   {
-    title: 'Contacto',
-    page: 'contact'
+    title: 'Ayuda',
+    page: '/'
   }
 ]
 const options = [
@@ -86,9 +86,9 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, fontFamily:"Lucida Handwriting" }}
           >
-            LOGO
+            Recetas del Mundo
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

@@ -13,10 +13,8 @@ import Recipe from './pages/Recipe';
 import MyRecipes from './pages/MyRecipes';
 import EditRecipe from './pages/EditRecipe';
 import { PasswordRecovery } from './pages/PasswordRecovery';
+import { Footer } from './components/Footer';
 
-
-// TODO misma logica de privateroute con register
-// TODO hacer otro componente
 
 // TODO componente de Ayuda /help
 function App() {
@@ -57,6 +55,7 @@ function App() {
               <Route path='new' element={}/>
             */}
           </Routes>
+          <Footer />
         </UserProvider>
     </ThemeProvider>
     </BrowserRouter>

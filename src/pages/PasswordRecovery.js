@@ -1,7 +1,7 @@
-import { Alert, AlertTitle, Box, Button, TextField, Typography } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react'
+import { Box, Button, TextField, Typography } from '@mui/material';
+import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { RecoveryVerification } from '../components/RecoveryVerification';
+import { AlertMessage } from '../components/AlertMessage';
 
 export const PasswordRecovery = () => {
 
@@ -49,21 +49,14 @@ export const PasswordRecovery = () => {
               <Button type="submit" variant="contained">Iniciar Sesion</Button>
             </div>
           </form>
-        </Box> : <Box className={'box'} sx={{
-          height: 300,
-          margin: 'auto',
-          width: '300px',
-        }}>
-          <Alert severity="success" >
-            <AlertTitle>Enviado</AlertTitle>
-            Te enviamos un e-mail para recuperar tu contraseña
-          </Alert>
+        </Box> : <>
+          <AlertMessage message={"Te enviamos un código a tu e-mail para recuperar tu contraseña"} title={"Enviado"} severity={"success"} />
           <div style={{ textAlign: "center", marginTop: 20 }}>
             <Link to={'/'} style={{ textDecoration: 'none' }}>
               <Button>Ir al inicio</Button>
             </Link>
           </div>
-        </Box>}
+        </>}
     </div>
   </>
 }

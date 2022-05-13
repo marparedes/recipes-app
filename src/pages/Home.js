@@ -1,6 +1,7 @@
 import { Button, FormControl, MenuItem, Select, TextField, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { AlertMessage } from '../components/AlertMessage'
 import { RecipeList } from '../components/RecipeList'
 import categories from '../mock/categories'
 import recipesMock from '../mock/recipes'
@@ -23,7 +24,7 @@ function Home() {
       if (params.get("category")) {
         var categoryFilter = filteredRecipes.filter(recipe => recipe.category === params.get("category"));
         filteredRecipes = categoryFilter;
-        
+
       }
       if (params.get("difficulty")) {
         var diffcicultyFilter = filteredRecipes.filter(recipe => recipe.difficulty === parseInt(params.get("difficulty")));
@@ -47,21 +48,21 @@ function Home() {
 
   const addParams = () => {
     let paramsQuery = {}
-    if(categoryQ && categoryQ!=="Todos") {
+    if (categoryQ && categoryQ !== "Todos") {
       paramsQuery.category = categoryQ
     }
-    if(difficultyQ && difficultyQ!=="Todos") {
+    if (difficultyQ && difficultyQ !== "Todos") {
       paramsQuery.difficulty = difficultyQ
     }
-    if(ingredientQ) {
+    if (ingredientQ) {
       paramsQuery.ingredient = ingredientQ
     }
     setParams(paramsQuery)
   }
 
   return <>
+    <Typography variant='h6' sx={{textAlign:"center", marginTop:10}}> Búsqueda por:</Typography>
     <div className='search-container'>
-      <Typography variant='h6'> Búsqueda por:</Typography>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <Button sx={{ display: 'block' }}> Ingrediente </Button>
         <TextField id="outlined-size-small" onChange={e => {
@@ -102,10 +103,11 @@ function Home() {
         </Select>
       </FormControl>
       <div className='search-button'>
-          <Button variant="contained" size='large' onClick={addParams}>Buscar</Button>
+        <Button variant="contained" size='large' onClick={addParams}>Buscar</Button>
       </div>
     </div>
-    <RecipeList recipes={recipes}></RecipeList>
+    {recipes.length > 0 ? <RecipeList recipes={recipes}></RecipeList> : <AlertMessage message={"No se encontraron recetas. Por favor, intente nuevamente."} severity={"info"} />}
+    
   </>
 }
 
