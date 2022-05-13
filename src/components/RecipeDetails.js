@@ -26,7 +26,7 @@ export const RecipeDetails = ({recipe}) => {
               </section>
               <section>
                 <h2 className="recipe-details-title">Procedimientoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</h2>
-                {recipe.process.split('\n').map(e => <p>{ e }</p>)}
+                {recipe.procedure.split('\n').map(e => <p>{ e }</p>)}
               </section>
             </div>
           </div>

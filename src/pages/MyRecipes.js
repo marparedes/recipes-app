@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function MyRecipes() {
     const history = useNavigate();
     const editRecipe = (id) => {
-      history(`/encuesta/${id}`)
+      history(`/my-recipes/${id}`)
     };
     const deleteRecipe = (id) => {
       setRecipesData(recipesData.filter(row => row.id !== id));

@@ -11,6 +11,7 @@ import PrivateRoute from './components/PrivateRoute';
 import CreateRecipe from './pages/CreateRecipe';
 import Recipe from './pages/Recipe';
 import MyRecipes from './pages/MyRecipes';
+import EditRecipe from './pages/EditRecipe';
 
 
 // TODO misma logica de privateroute con register
@@ -36,6 +37,11 @@ function App() {
             <Route path='/my-recipes' element={
               <PrivateRoute>
                 <MyRecipes />
+              </PrivateRoute>
+            } />
+            <Route path='/my-recipes/:id' element={
+              <PrivateRoute>
+                <EditRecipe />
               </PrivateRoute>
             } />
             <Route path='/my-recipes/new' element={ // TODO: se podría mover a "Mis Recetas" cuando esa sección sea implementada

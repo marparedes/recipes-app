@@ -15,7 +15,7 @@ const recipesMock = [
           " agua, cantidad necesaria\n" +
           " 1 hoja de laurel\n" +
           " 1 diente de ajo",
-        process: "Para empezar con la receta fácil del vitel toné saludable, primero debes cocinar la carne. Señalamos que en la elaboración tradicional se utiliza peceto, una carne magra. En este punto no necesitaremos realizar modificaciones. Hiérvelo aproximadamente 1 hora y media en abundante agua con verduras para que le sumen sabor al caldo. Recomendamos apio, cebolla, ajo, zanahoria, sin piel y en trozos grandes. Si tienes olla a presión, reducirás el tiempo de cocción a 40 minutos - 1 hora. Seguido, lleva la carne a un recipiente de plástico junto con el caldo y déjala enfriar en él para que se mantenga húmeda. Una vez fría, córtala en rodajas.\n" +
+        procedure: "Para empezar con la receta fácil del vitel toné saludable, primero debes cocinar la carne. Señalamos que en la elaboración tradicional se utiliza peceto, una carne magra. En este punto no necesitaremos realizar modificaciones. Hiérvelo aproximadamente 1 hora y media en abundante agua con verduras para que le sumen sabor al caldo. Recomendamos apio, cebolla, ajo, zanahoria, sin piel y en trozos grandes. Si tienes olla a presión, reducirás el tiempo de cocción a 40 minutos - 1 hora. Seguido, lleva la carne a un recipiente de plástico junto con el caldo y déjala enfriar en él para que se mantenga húmeda. Una vez fría, córtala en rodajas.\n" +
           "\n" +
           "2\n" +
           "¿Te preguntas cómo se hace la crema del vitel toné light? Pues bien, este es el punto clave para convertir este clásico y calórico plato festivo en saludable. Para hacerla, procesa el atún al natural con la mayonesa light y 3 aceitunas o 2 alcaparras. Señalamos que también puedes hacer la salsa vitel toné fácil sin anchoas ni ingredientes extras, incluso puedes hacer el vitel toné sin pescado. Seguido, procésala hasta obtener una consistencia homogénea y agrega caldo de la cocción de la carne al gusto. Ten en cuenta que esta cantidad es utilizada para unas 8 porciones.\n" +
@@ -28,6 +28,7 @@ const recipesMock = [
         category: "Carnes",
         author: "author_name",
         score: 5,
+        publish: true,
         images: ["https://t1.rg.ltmcdn.com/es/posts/2/9/6/vitel_tone_light_75692_paso_2_600.webp", "https://t2.rg.ltmcdn.com/es/posts/2/9/6/vitel_tone_light_75692_600.jpg", "https://t2.rg.ltmcdn.com/es/posts/2/9/6/vitel_tone_light_75692_paso_1_600.webp"]
     },
     {
@@ -50,7 +51,7 @@ const recipesMock = [
           " pimienta\n" +
           " 1 pasta de hojaldre vegetal\n" +
           " leche vegetal",
-        process: "1\n" +
+        procedure: "1\n" +
           "Para empezar con la receta de wellington vegano, primero debes preparar el relleno de este plato principal. Para ello, cocina las verduras: zanahoria, apio, ajo, cebolla y setas, córtalas al gusto.\n" +
           "\n" +
           "Truco: es recomendable hacerlo en trozos pequeñitos para que la textura final sea mejor.\n" +
@@ -95,7 +96,7 @@ const recipesMock = [
           " 1 chorro de aceite de oliva\n" +
           " 1 puñado de sal\n" +
           " 1 litro de agua",
-        process: "Para empezar con la receta de la sopa de tomate gaditana, primero lava el pimiento rojo y el verde. Seguido, córtalo en tiras o en trozos. Luego, pela la cebolla y córtala en juliana. También pela un par de dientes de ajo.\n" +
+        procedure: "Para empezar con la receta de la sopa de tomate gaditana, primero lava el pimiento rojo y el verde. Seguido, córtalo en tiras o en trozos. Luego, pela la cebolla y córtala en juliana. También pela un par de dientes de ajo.\n" +
           "\n" +
           "2\n" +
           "Pela los tomates y retira la parte central. Seguido, córtalo en trozos.\n" +
@@ -132,7 +133,7 @@ const recipesMock = [
           " 60 gramos de dulce de leche repostero\n" +
           " 40 gramos de queso untable\n" +
           " 30 gramos de chocolate",
-        process: "El primer paso para empezar con la receta de alfajores de chocotorta consiste en moler las galletitas. Puedes hacerlo en una bolsa, aplastándolas con un palo de amasar o en una procesadora de alimentos.\n" +
+        procedure: "El primer paso para empezar con la receta de alfajores de chocotorta consiste en moler las galletitas. Puedes hacerlo en una bolsa, aplastándolas con un palo de amasar o en una procesadora de alimentos.\n" +
           "\n" +
           "2\n" +
           "Mezcla las galletitas molidas con la manteca derretida para obtener una consistencia tipo arena húmeda.\n" +
@@ -170,7 +171,7 @@ const recipesMock = [
           " 2 betarragas o remolachas\n" +
           " 1 cebolla morada mediana\n" +
           " 2 huevos",
-        process: "Para empezar a preparar la ensaladilla rusa dominicana, lava las remolachas con abundante agua, corta la raíz y el tallo y pica la pulpa en cubos medianos. Cocínala en una olla mediana con agua hirviendo y, pasados 15 minutos, retírala con una espumadera. Resérvala.\n" +
+        procedure: "Para empezar a preparar la ensaladilla rusa dominicana, lava las remolachas con abundante agua, corta la raíz y el tallo y pica la pulpa en cubos medianos. Cocínala en una olla mediana con agua hirviendo y, pasados 15 minutos, retírala con una espumadera. Resérvala.\n" +
           "\n" +
           "2\n" +
           "Pela las zanahorias y córtalas en cubos del mismo tamaño que los cuadrados de remolacha. Después, cocínalas en una olla mediana con agua hirviendo durante aproximadamente en 15-20 minutos, cuélalas para retirar el agua y resérvalas para seguir con la preparación de la ensalada rusa dominicana.\n" +
@@ -208,7 +209,7 @@ const recipesMock = [
         id: 6,
         title: "Albóndigas con salsa de soja, puré de papas, y zanahoria asada",
         ingredients: "5 papas, 350 gramos de zanahoria, 1 cebollino, 1 diente de ajo, 1 rodaja de pan, 1 frasco de polvo de ajo, 2 botellas de salsa de soja, 1/2 kilo de carne picada, 1 botella de aceite de oliva, 2 cucharadas de azúcar, 2 cucharadas de manteca.",
-        process: "1.\n" +
+        procedure: "1.\n" +
           "Preheat oven to 425 degrees.\n" +
           "Wash and dry all produce.\n" +
           "Dice potatoes into 1/2-inch pieces.\n" +

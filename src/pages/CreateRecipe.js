@@ -94,7 +94,7 @@ class CreateRecipe extends React.Component {
   render() {
     return (
       <div className={'create-recipe'}>
-        <h2 className={'page-title'}>Create a recipe</h2>
+        <h2 className={'page-title'}>Crear una receta</h2>
 
         <Box className={'box'} sx={{
           height: 300,
