@@ -102,7 +102,7 @@ function Profile() {
           margin: 'auto',
           width: '80%',
         }}>
-          <h2>Cambiar datos personales</h2>
+          <h2 className="centered-text">Cambiar datos personales</h2>
           <form style={{ height: '100%' }} onSubmit={submitForm}>
             <div className={'form-text-field'}>
               <p className={'field-name'}>Nombre de usuario</p>
@@ -113,7 +113,7 @@ function Profile() {
                 value={values.username}
               />
             </div>
-            <span style={{ color: "red" }}>{errors.username}</span>
+            <p className={errors.username ? "error-message centered-text" : "hidden"}>{errors.username}</p>
 
             <div className={'form-text-field'}>
               <p className={'field-name'}>Nombre</p>
@@ -123,7 +123,7 @@ function Profile() {
                 value={values.first_name}
               />
             </div>
-            <span style={{ color: "red" }}>{errors["first_name"]}</span>
+            <p className={errors.first_name ? "error-message centered-text" : "hidden"}>{errors.first_name}</p>
 
             <div className={'form-text-field'}>
               <p className={'field-name'}>Apellido</p>
@@ -133,10 +133,10 @@ function Profile() {
                 value={values.last_name}
               />
             </div>
-            <span style={{ color: "red" }}>{errors["last_name"]}</span>
+            <p className={errors.last_name ? "error-message centered-text" : "hidden"}>{errors.last_name}</p>
             <br></br>
-            <p className="error-message" hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</p>
-            <p className="success-message" hidden={!successMessage} ref={successRef} aria-live="assertive">{successMessage}</p>
+            <p className={errorMessage ? "error-message centered-text" : "hidden"} ref={errRef}>{errorMessage}</p>
+            <p className={successMessage ? "success-message centered-text" : "hidden"} ref={successRef} aria-live="assertive">{successMessage}</p>
             <div className='form-button'>
               <Button type="submit" variant="contained" className={'save-button'}>Guardar cambios</Button>
             </div>
@@ -151,7 +151,7 @@ function Profile() {
           margin: 'auto',
           width: '80%',
         }}>
-          <h2>Cambiar contraseña</h2>
+          <h2 className="centered-text">Cambiar contraseña</h2>
           <form onSubmit={submitPasswordForm}>
             <div className={'form-text-field'}>
               <p className={'field-name'}>Contraseña</p>
@@ -162,9 +162,8 @@ function Profile() {
                 value={passwordValues.password}
               />
             </div>
-            <span style={{ color: "red" }}>{passwordErrors["password"]}</span>
-            <br></br>
-            <p className="success-message" hidden={!successPasswordMessage} ref={successPasswordRef} aria-live="assertive">{successPasswordMessage}</p>
+            <p className={passwordErrors["password"] ? "error-message centered-text" : "hidden"}>{passwordErrors["password"]}</p>
+            <p className={successPasswordMessage ? "success-message centered-text" : "hidden"} ref={successPasswordRef} aria-live="assertive">{successPasswordMessage}</p>
             <div className='form-button'>
               <Button type="submit" variant="outlined" >Guardar cambios</Button>
             </div>

@@ -43,6 +43,10 @@ const userSettings = [
   {
     title: 'Mis recetas',
     page: 'my-recipes'
+  },
+  {
+    title: 'Crear receta',
+    page: 'my-recipes/new'
   }
 ];
 

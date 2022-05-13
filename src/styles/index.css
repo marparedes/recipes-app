@@ -29,6 +29,12 @@
 
 .form-button {
     text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.form-button button {
+    margin: 0 !important;
 }
 
 .field-name {
@@ -84,17 +90,15 @@
 }
 
 .error-message {
-    text-align: center;
     color: red;
     margin-top: 20px!important;
-    padding: 20px;
 }
 
 .success-message {
     color: green;
     font-size: 20px;
     margin: 0;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .profile-section {
@@ -201,4 +205,12 @@
     .half-container {
         min-width: 80vw;
     }
+}
+
+.hidden {
+    display: none;
+}
+
+.centered-text {
+    text-align: center;
 }

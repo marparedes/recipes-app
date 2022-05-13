@@ -102,7 +102,7 @@ class CreateRecipe extends React.Component {
           width: '80%',
         }}>
           <form onSubmit={this.contactSubmit.bind(this)}>
-            <div className={'form-text-field recipe-name-field'}>
+            <div className={'form-select-field recipe-name-field'}>
               <p className={'field-name'}>Nombre</p>
               <TextField className={'form-field'}
                          id="recipe-name"
