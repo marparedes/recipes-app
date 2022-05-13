@@ -43,7 +43,7 @@ export const PasswordRecovery = () => {
               />
             </div>
 
-            <Typography className="error-message" hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</Typography>
+            <Typography className={errorMessage ? "error-message centered-text" : "hidden"} hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</Typography>
             <div className='recovery-button'>
               <Button type="submit" variant="contained">Enviar</Button>
             </div>
