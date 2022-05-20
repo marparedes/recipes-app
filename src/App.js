@@ -14,6 +14,7 @@ import MyRecipes from './pages/MyRecipes';
 import EditRecipe from './pages/EditRecipe';
 import { PasswordRecovery } from './pages/PasswordRecovery';
 import { Footer } from './components/Footer';
+import { Container } from './components/Container';
 
 
 // TODO componente de Ayuda /help
@@ -22,42 +23,44 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <UserProvider>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/recipes/:id' element={<Recipe />} />
-            <Route path='/password-recovery' element={<PasswordRecovery />} />
-            <Route path='/profile' element={
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            } />
-            <Route path='/my-recipes' element={
-              <PrivateRoute>
-                <MyRecipes />
-              </PrivateRoute>
-            } />
-            <Route path='/my-recipes/:id' element={
-              <PrivateRoute>
-                <EditRecipe />
-              </PrivateRoute>
-            } />
-            <Route path='/my-recipes/new' element={ // TODO: se podría mover a "Mis Recetas" cuando esa sección sea implementada
+          <Container>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/recipes/:id' element={<Recipe />} />
+              <Route path='/password-recovery' element={<PasswordRecovery />} />
+              <Route path='/profile' element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              } />
+              <Route path='/my-recipes' element={
+                <PrivateRoute>
+                  <MyRecipes />
+                </PrivateRoute>
+              } />
+              <Route path='/my-recipes/:id' element={
+                <PrivateRoute>
+                  <EditRecipe />
+                </PrivateRoute>
+              } />
+              <Route path='/my-recipes/new' element={ // TODO: se podría mover a "Mis Recetas" cuando esa sección sea implementada
 
-              //<PrivateRoute> TODO: hacer privado
+                //<PrivateRoute> TODO: hacer privado
                 <CreateRecipe />
-              //</PrivateRoute>
-            } />
-            {/* <Route path='recipes' element={}>
+                //</PrivateRoute>
+              } />
+              {/* <Route path='recipes' element={}>
               <Route path=':recipeId' element={}/>
               <Route path='new' element={}/>
             */}
-          </Routes>
-          <Footer />
+            </Routes>
+            <Footer />
+          </Container>
         </UserProvider>
-    </ThemeProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

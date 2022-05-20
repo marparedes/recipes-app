@@ -37,13 +37,12 @@ function Login() {
 
   return (
     <div className={'login-form'}>
-      <Typography variant='h3' className={'page-title'}>Iniciar sesión</Typography>
-
-      <Box className={'box'} sx={{
-        height: 300,
+      <Box sx={{
         margin: 'auto',
         width: '80%',
       }}>
+      <Typography variant='h4' className={'page-title'}>Iniciar sesión</Typography>
+
         <form onSubmit={handleSubmit}>
           <div className={'form-text-field'}>
             <p className={'field-name'}>E-mail</p>

@@ -50,8 +50,7 @@ const userSettings = [
   }
 ];
 
-// TODO fijarme de agregar pagina de explicaciones
-// TODO para pantallas chicas agregar un IconButton
+// TODO para pantallas chicas agregar un IconButton para UserSettings/Options
 
 const Navbar = () => {
 

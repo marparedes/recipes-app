@@ -89,18 +89,14 @@ function Register() {
     <div className={'register-form'}>
       <h2 className={'page-title'}>Crear nuevo usuario</h2>
 
-      <Box className={'box'} sx={{
-        height: 300,
-        margin: 'auto',
-        width: '80%',
-      }}>
+      <Box sx={{ margin: 'auto', width: '80%' }}>
         <form onSubmit={submitForm}>
           <div className={'form-text-field'}>
             <p className={'field-name'}>Email</p>
             <TextField className={'form-field'}
-                       id="email"
-                       onChange={(e) => { handleChange({ name: 'email', value: e.target.value }); }}
-                       value={values.email}
+              id="email"
+              onChange={(e) => { handleChange({ name: 'email', value: e.target.value }); }}
+              value={values.email}
             />
           </div>
           <p className={errors.email ? "error-message centered-text" : "hidden"}>{errors.email}</p>

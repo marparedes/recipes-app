@@ -61,7 +61,7 @@ function Home() {
   }
 
   return <>
-    <Typography variant='h6' sx={{textAlign:"center", marginTop:10}}> Búsqueda por:</Typography>
+    <Typography variant='h6' sx={{ textAlign: "center", marginTop: 10 }}> Búsqueda por:</Typography>
     <div className='search-container'>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <Button sx={{ display: 'block' }}> Ingrediente </Button>
@@ -107,7 +107,7 @@ function Home() {
       </div>
     </div>
     {recipes.length > 0 ? <RecipeList recipes={recipes}></RecipeList> : <AlertMessage message={"No se encontraron recetas. Por favor, intente nuevamente."} severity={"info"} />}
-    
+
   </>
 }
 

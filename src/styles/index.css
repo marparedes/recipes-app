@@ -1,3 +1,10 @@
+body {
+    margin: 0;
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+}
+
 .box {
     height: 300px;
     margin: auto;
@@ -57,22 +64,22 @@
     width: 30%;
 }
 
-.footer {
+footer {
     background-color: #ED6A58;
     color: #EEEDD6;
-    box-sizing: content-box;
-    padding: 20px;
 }
 
 .login-form {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .register-form {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    min-height: 100vh;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 .recipe-name-field {

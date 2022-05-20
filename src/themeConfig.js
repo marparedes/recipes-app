@@ -11,8 +11,7 @@ const theme = createTheme({
         },
     },
     typography: {
-        fontFamily: "Raleway",
-        color: '#444444'
+        fontFamily: "Raleway"
     }
 })
 

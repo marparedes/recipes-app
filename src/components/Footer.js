@@ -1,17 +1,14 @@
 import { Box, Button, Container, Grid, TextField } from '@mui/material'
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 export const Footer = () => {
   return (
     <footer>
       <Box
-        px={{ xs: 3, sm: 10 }}
-        py={{ xs: 5, sm: 10 }}
         bgcolor="primary.main"
         color="#EEEDD6"
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ padding: "60px"}}>
           <Grid container spacing={5}>
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Seguinos</Box>
@@ -52,14 +49,14 @@ export const Footer = () => {
                 sx={{ margin: "20px 0" }}
                 color="secondary"
                 focused
-                InputProps={{ endAdornment: <Button variant='contained'  color='secondary'>Registrar</Button> }} />
+                InputProps={{ endAdornment: <Button variant='contained' color='secondary'>Registrar</Button> }} />
+            </Grid>
           </Grid>
-        </Grid>
-        <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
-          Recetas del Mundo &reg; {new Date().getFullYear()}
-        </Box>
-      </Container>
-    </Box>
-    </footer >
+          <Box textAlign="center" sx={{ paddingTop:"40px"}}>
+            Recetas del Mundo &reg; {new Date().getFullYear()}
+          </Box>
+        </Container>
+      </Box>
+    </footer>
   )
 }
