@@ -5,6 +5,7 @@ import { TextField, Typography } from '@mui/material';
 import '../styles/index.css';
 import { Box } from '@mui/system';
 import { Link, useNavigate } from "react-router-dom";
+import urlWebServices from '../webServices';
 
 function Login() {
   const { login } = useUserContext()
@@ -15,23 +16,38 @@ function Login() {
 
   const [errorMessage, setErrorMessage] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     userRef.current.focus();
-  }, [email, password]);
+  }, [username, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!((email === 'hsimpson@gmail.com') && (password === '123'))) {
+
+
+    const formData = new URLSearchParams();
+    formData.append('username', username);
+    formData.append('password', password);
+    const response = await fetch(urlWebServices.login, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/x-www-form-urlencoded',
+        'Origin': 'http://localhost:3000',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: formData,
+    });
+    const parsedResponse = await response.json();
+    if (response.status !== 200) {
       setErrorMessage("No se encontró ningún usuario con esas credenciales");
       return;
     }
-    const id = "userId";
-    setEmail('');
+    setUsername('');
     setPassword('');
     setErrorMessage('');
-    login({ id, email })
+    login({ id: parsedResponse.data.user._id, token: parsedResponse.data.token, username: parsedResponse.data.user.username });
     history('/');
   }
 
@@ -45,12 +61,12 @@ function Login() {
 
         <form onSubmit={handleSubmit}>
           <div className={'form-text-field'}>
-            <p className={'field-name'}>E-mail</p>
+            <p className={'field-name'}>Nombre de usuario</p>
             <TextField className={'form-field'}
-              id="email"
+              id="username"
               ref={userRef}
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
               required={true}
             />
           </div>
