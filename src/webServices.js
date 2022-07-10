@@ -1,8 +1,8 @@
 const urlApi = "http://localhost:8081";
-console.log("url", urlApi);
 
 const urlWebServices = {
   getRecipes: `${urlApi}/api/recipes`,
+  getRecipe: `${urlApi}/api/recipes/{id}`,
   // login:urlApi +"api/users/login",
   // uploadFileImg: urlApi + "utils/uploadImg",
   // guardarImgUser: urlApi + "api/users/guardarImgUser",

@@ -1,9 +1,8 @@
-import { Button, FormControl, MenuItem, Select, TextField, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { AlertMessage } from '../components/AlertMessage'
-import { RecipeList } from '../components/RecipeList'
-import categories from '../mock/categories'
+import { Button, FormControl, MenuItem, Select, TextField, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { AlertMessage } from '../components/AlertMessage';
+import { RecipeList } from '../components/RecipeList';
+import categories from '../mock/categories';
 import urlWebServices from '../webServices';
 
 function Home() {

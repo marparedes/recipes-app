@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { ArrowCircleLeft, ArrowCircleRight } from '@mui/icons-material';
 
 
-const ImageSlider = (imageUrls) => {
+const ImageSlider = (receivedImageUrls) => {
   const [current, setCurrent] = useState(0);
-  if (!(imageUrls || Array.isArray(imageUrls) || imageUrls.imageUrls.length)) {
+  const [imageUrls, setImageUrls] = useState([]);
+
+  useEffect(() => {
+    setImageUrls(receivedImageUrls ? receivedImageUrls : []);
+    console.log("imageUrls", receivedImageUrls)
+  }, []);
+
+  if (!(imageUrls || Array.isArray(imageUrls) || imageUrls.length)) {
+    console.log("imageUrls not valid", imageUrls)
     return null;
   }
 
@@ -18,19 +26,27 @@ const ImageSlider = (imageUrls) => {
 
   return (
     <section className='slider'>
-      <ArrowCircleLeft className='left-arrow' onClick={prevSlide}></ArrowCircleLeft>
+      <ArrowCircleLeft
+        className='left-arrow'
+        style={{display: imageUrls.imageUrls && imageUrls.imageUrls.length > 1 ? 'block' : 'none'}}
+        onClick={prevSlide}>
+      </ArrowCircleLeft>
       {
-        imageUrls.imageUrls.map((slide, index) => {
+        imageUrls.imageUrls ? imageUrls.imageUrls.map((slide, index) => {
           return (
             <div className={index === current ? 'slide active' : 'slide'} key={index}>
               {index === current && (
-                <img src={slide} alt='Imagen' className='recipe-image' />
+                <img src={slide.url} alt='Imagen' className='recipe-image' />
               )}
             </div>
           );
-        })
+        }) : <></>
       }
-      <ArrowCircleRight className='right-arrow' onClick={nextSlide}></ArrowCircleRight>
+      <ArrowCircleRight
+        className='right-arrow'
+        style={{display: imageUrls.imageUrls && imageUrls.imageUrls.length > 1 ? 'block' : 'none'}}
+        onClick={nextSlide}>
+      </ArrowCircleRight>
     </section>
   );
 }

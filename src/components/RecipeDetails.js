@@ -1,5 +1,5 @@
 import { Box } from '@mui/system';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../styles/index.css';
 import ImageSlider from './ImageSlider';
 import RestaurantMenuOutlinedIcon from '@mui/icons-material/RestaurantMenuOutlined';
@@ -8,13 +8,29 @@ import { Button, TextField } from '@mui/material';
 import { useUserContext } from './UserContext';
 
 export const RecipeDetails = ({ recipe }) => {
+  const [recipeData, setRecipeData] = useState({
+    _id: "",
+    author: "",
+    category: "",
+    difficulty: "",
+    images: [],
+    ingredients: "",
+    title: "",
+    procedure: "",
+    averageScore: "",
+  })
+
+  useEffect(() => {
+    console.log("Recipe:", recipe);
+    setRecipeData(recipe);
+  });
 
   const { user } = useUserContext();
 
   const [showScoreButton, setShowScoreButton] = useState(true)
   const [newScore, setNewScore] = useState(0)
 
-  const [score, setScore] = useState(recipe.score)
+  const [score, setScore] = useState(recipeData.score)
 
   const updateScore = () => {
     var num = (parseFloat(parseFloat(score) + parseFloat(newScore))/2).toFixed(1)
@@ -22,16 +38,18 @@ export const RecipeDetails = ({ recipe }) => {
     setShowScoreButton(!showScoreButton)
   }
 
+  console.log("Recipe data", recipeData)
 
-  return (
+
+  return recipeData ? (
     <Box sx={{ flexGrow: 1, margin: 10 }} >
-      <h2 className="page-title">{recipe.title}</h2>
+      <h2 className="page-title">{recipeData.title}</h2>
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", width: "100%" }}>
         <div className="half-container">
           <div className="recipe-details-half">
-            <p className="one-line-recipe-field"><strong>Autor:</strong> {recipe.author}</p>
-            <ImageSlider imageUrls={recipe.images}></ImageSlider>
-            <p className="one-line-recipe-field"><strong>Categoría:</strong> {recipe.category}</p>
+            <p className="one-line-recipe-field"><strong>Autor:</strong> {recipeData.author}</p>
+            <ImageSlider imageUrls={recipeData.images}></ImageSlider>
+            <p className="one-line-recipe-field"><strong>Categoría:</strong> {recipeData.category}</p>
             <p className="one-line-recipe-field"><strong>Calificación:</strong> {score} / 5</p>
 
             {showScoreButton ? <Button variant='outlined' disabled={!user} onClick={() => setShowScoreButton(!showScoreButton)}>Calificar receta</Button> :
@@ -54,16 +72,16 @@ export const RecipeDetails = ({ recipe }) => {
             <div style={{ display: "inline-block" }}>
               <section>
                 <h2><RestaurantMenuOutlinedIcon /> Ingredientes</h2>
-                <p>{recipe.ingredients}</p>
+                <p>{recipeData.ingredients}</p>
               </section>
               <section>
                 <h2 className="recipe-details-title"><AccessTimeFilledIcon /> Procedimiento</h2>
-                {recipe.procedure.split('\n').map(e => <p>{e}</p>)}
+                {!!recipeData.procedure ? recipeData.procedure.split('\n').map(e => <p>{e}</p>) : ""}
               </section>
             </div>
           </div>
         </div>
       </div>
     </Box>
-  )
+  ) : (<div>Loading...</div>)
 }
