@@ -225,3 +225,8 @@ footer {
 .centered-text {
     text-align: center;
 }
+
+.my-recipes-none-found {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}

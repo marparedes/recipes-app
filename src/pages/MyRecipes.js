@@ -1,13 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import {
+  Button,
+  Dialog, DialogActions,
+  DialogContent,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow
+} from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useNavigate } from 'react-router-dom';
 import urlWebServices from '../webServices';
 import { useUserContext } from '../components/UserContext';
+import { RecipeList } from '../components/RecipeList';
+import { AlertMessage } from '../components/AlertMessage';
 
 function MyRecipes() {
   const [recipes, setRecipes] = useState([]);
+  const [selectedId, setSelectedId] = useState("");
+  const [showDialog, setShowDialog] = useState(false);
   const { user } = useUserContext();
 
   useEffect(() => {
@@ -47,41 +62,83 @@ function MyRecipes() {
   const editRecipe = (id) => {
     history(`/my-recipes/${id}`)
   };
-  const deleteRecipe = (id) => {
-    setRecipes(recipes.filter(row => row.id !== id));
+  const deleteRecipe = async () => {
+    console.log("Selected id:", selectedId)
+    let url = urlWebServices.deleteRecipe.replace('{id}', selectedId);
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/x-www-form-urlencoded',
+          'x-access-token': user.token,
+          'Origin': 'http://localhost:3000',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+      });
+      if (response.status === 204) {
+        await setRecipes(recipes.filter(row => row._id !== selectedId));
+      }
+    } catch (error) {
+      console.log(`Could not delete recipe ${selectedId}`);
+    }
+    await setSelectedId("");
+    closeDialog();
   };
 
+  const openDialog = async (id) => {
+    await setSelectedId(id);
+    console.log("Setting id:", id, selectedId)
+    setShowDialog(true);
+  }
+  const closeDialog = () => {
+    setShowDialog(false);
+  }
+
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell><b>Acciones</b></TableCell>
-            <TableCell><b>Nombre</b></TableCell>
-            <TableCell><b>Categoría</b></TableCell>
-            <TableCell><b>Calificación</b></TableCell>
-            <TableCell><b>Publicada</b></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {recipes !== undefined ? recipes.map((row) => (
-            <TableRow
-              key={row._id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell>
-                <EditIcon color="primary" onClick={() => editRecipe(row._id)} />
-                <DeleteIcon color="primary" onClick={() => deleteRecipe(row._id)} />
-              </TableCell>
-              <TableCell component="th" scope="row">{row.title}</TableCell>
-              <TableCell >{row.category}</TableCell>
-              <TableCell >{row.averageScore}</TableCell>
-              <TableCell >{row.published ? 'Sí' : 'No'}</TableCell>
+    <div>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell><b>Acciones</b></TableCell>
+              <TableCell><b>Nombre</b></TableCell>
+              <TableCell><b>Categoría</b></TableCell>
+              <TableCell><b>Calificación</b></TableCell>
+              <TableCell><b>Publicada</b></TableCell>
             </TableRow>
-          )) : <div>Cargando...</p>}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {recipes !== undefined ? recipes.map((row) => (
+              <TableRow
+                key={row._id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell>
+                  <EditIcon color="primary" onClick={() => editRecipe(row._id)} />
+                  <DeleteIcon color="primary" onClick={() => openDialog(row._id)} />
+                </TableCell>
+                <TableCell component="th" scope="row">{row.title}</TableCell>
+                <TableCell >{row.category}</TableCell>
+                <TableCell >{row.averageScore}</TableCell>
+                <TableCell >{row.published ? 'Sí' : 'No'}</TableCell>
+              </TableRow>
+            )) : <div>Cargando...</div>}
+          </TableBody>
+        </Table>
+        <Dialog open={showDialog} onClose={closeDialog}>
+          <DialogContent>¿Borrar la receta permanentemente?</DialogContent>
+          <DialogActions>
+            <Button onClick={closeDialog}>Cancelar</Button>
+            <Button onClick={deleteRecipe}>Borrar</Button>
+          </DialogActions>
+        </Dialog>
+      </TableContainer>
+      <div className={"my-recipes-none-found"}>
+        {recipes.length > 0 ? <></> : <AlertMessage message={"No se encontraron recetas. Por favor, intente" +
+          " nuevamente."} severity={"info"} />}
+      </div>
+    </div>
   )
 }
 
