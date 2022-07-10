@@ -10,12 +10,12 @@ export const RecipeList = ({ recipes }) => {
       <Grid container spacing={2} justifyContent="center">
         {recipes.map(item =>
           <RecipeCard
-            id={item.id}
+            id={item._id}
             key={item.id}
             title={item.title}
-            image={item.images[0]}
+            image={item.images.length > 0 ? item.images[0].url : ""} // TODO: sacar
             category={item.category}
-            score={item.score}
+            score={item.averageScore}
             difficulty={item.difficulty}
           />)}
       </Grid>

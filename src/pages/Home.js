@@ -4,11 +4,12 @@ import { useSearchParams } from 'react-router-dom'
 import { AlertMessage } from '../components/AlertMessage'
 import { RecipeList } from '../components/RecipeList'
 import categories from '../mock/categories'
-import recipesMock from '../mock/recipes'
+import urlWebServices from '../webServices';
 
 function Home() {
-
-  const [params, setParams] = useSearchParams()
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(null);
 
   const [ingredientQ, setIngredientQ] = useState(null)
   const [categoryQ, setCategoryQ] = useState("Todos")
@@ -16,48 +17,73 @@ function Home() {
 
   const [recipes, setRecipes] = useState([])
 
-  const difficultyMock = ["1", "2", "3", "4", "5"]
+  const difficultyMock = ["1", "2", "3", "4", "5"];
 
   useEffect(() => {
-    if (hasParams(params)) {
-      var filteredRecipes = [...recipesMock]
-      if (params.get("category")) {
-        var categoryFilter = filteredRecipes.filter(recipe => recipe.category === params.get("category"));
-        filteredRecipes = categoryFilter;
-
-      }
-      if (params.get("difficulty")) {
-        var diffcicultyFilter = filteredRecipes.filter(recipe => recipe.difficulty === parseInt(params.get("difficulty")));
-        filteredRecipes = diffcicultyFilter;
-      }
-      if (params.get("ingredient")) {
-        var ingredientFilter = filteredRecipes.filter(recipe => {
-          var item = recipe.ingredients.split('\n').map(ingredient => ingredient.includes(params.get("ingredient")))
-          return (item.includes(true))
-        });
-        filteredRecipes = ingredientFilter;
-      }
-      setRecipes(filteredRecipes)
-    } else {
-      setRecipes(recipesMock)
+    const getRecipes = async () => {
+      const url = `${urlWebServices.getRecipes}?page=1&limit=1`;
+      const response = await fetch(url, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Accept': 'application/x-www-form-urlencoded',
+          // 'x-access-token': WebToken.webToken,
+          'Origin': 'http://localhost:3000',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+      });
+      const parsedResponse = await response.json();
+      console.log("Got response:", parsedResponse)
+      setRecipes(parsedResponse.data.docs);
+      setCurrentPage(parseInt(parsedResponse.data.page));
+      setMaxPage(parseInt(parsedResponse.data.pages));
     }
-  }, [params])
-
-
-  const hasParams = params => params.has("category") || params.has("difficulty") || params.has("ingredient")
-
-  const addParams = () => {
-    let paramsQuery = {}
-    if (categoryQ && categoryQ !== "Todos") {
-      paramsQuery.category = categoryQ
+    try {
+      getRecipes().then().catch((error) => {
+        console.log("Could not fetch recipes...", error)
+      });
+    } catch (error) {
+      console.log(error.message);
     }
-    if (difficultyQ && difficultyQ !== "Todos") {
-      paramsQuery.difficulty = difficultyQ
+  }, []);
+
+  const fetchRecipes = async (currentPage) => {
+    setIsLoaded(false);
+    let url = `${urlWebServices.getRecipes}?page=${currentPage}&limit=1`;
+    if (!!categoryQ && categoryQ !== "Todos") url += `&category=${categoryQ}`;
+    if (!!difficultyQ && difficultyQ !== "Todos") url += `&difficulty=${difficultyQ}`;
+    if (!!ingredientQ) url += `&ingredients=${ingredientQ}`;
+    console.log("Using url: ", url)
+    const response = await fetch(url, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/x-www-form-urlencoded',
+        // 'x-access-token': WebToken.webToken,
+        'Origin': 'http://localhost:3000',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+    });
+    const parsedResponse = await response.json();
+    console.log("Got response:", parsedResponse)
+    if (parsedResponse.status === 200) {
+      setRecipes(currentPage === 1 ? parsedResponse.data.docs : recipes.concat(parsedResponse.data.docs));
+      setCurrentPage(parseInt(parsedResponse.data.page));
+      setMaxPage(parseInt(parsedResponse.data.pages));
+      setIsLoaded(true);
     }
-    if (ingredientQ) {
-      paramsQuery.ingredient = ingredientQ
-    }
-    setParams(paramsQuery)
+  }
+
+  console.log("Re-rendered recipes state:", recipes);
+  console.log("Re-rendered current page state:", currentPage);
+  console.log("Re-rendered max page state:", maxPage);
+
+  const handleNewSearch = async () => {
+    await fetchRecipes(1);
+  }
+
+  const handleSeeMoreSearch = async () => {
+    await fetchRecipes(currentPage + 1);
   }
 
   return <>
@@ -103,11 +129,16 @@ function Home() {
         </Select>
       </FormControl>
       <div className='search-button'>
-        <Button variant="contained" size='large' onClick={addParams}>Buscar</Button>
+        <Button variant="contained" size='large' onClick={handleNewSearch}>Buscar</Button>
       </div>
     </div>
     {recipes.length > 0 ? <RecipeList recipes={recipes}></RecipeList> : <AlertMessage message={"No se encontraron recetas. Por favor, intente nuevamente."} severity={"info"} />}
-
+    {(maxPage !== null && currentPage < maxPage) ?
+      <div className='search-more-button'>
+        <Button variant="contained" size='large' onClick={handleSeeMoreSearch}>Ver más recetas</Button>
+      </div> :
+      null
+    }
   </>
 }
 

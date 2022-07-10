@@ -115,8 +115,12 @@ footer {
     width: 100%;
 
 }
+
 .search-button {
     margin: auto;
+}
+.search-more-button {
+    margin: auto auto 30px;
 }
 
 .search-container {

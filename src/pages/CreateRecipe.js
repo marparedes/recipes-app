@@ -14,7 +14,7 @@ class CreateRecipe extends React.Component {
     super(props);
 
     this.state = {
-      fields: {'images': [], 'publish': false},
+      fields: {'images': [], 'published': false},
       errors: {},
     };
   }
@@ -80,9 +80,9 @@ class CreateRecipe extends React.Component {
 
   updateCheckBox(e){
     let fields = this.state.fields;
-    fields["publish"] = !fields["publish"];
+    fields["published"] = !fields["published"];
     this.setState({ fields });
-    return fields["publish"];
+    return fields["published"];
   }
 
   fileSelectedHandler = (e) => {
@@ -183,14 +183,14 @@ class CreateRecipe extends React.Component {
             <span style={{ color: "red" }}>{this.state.errors["images"]}</span>
 
             <div><FormControlLabel
-              id="publish"
+              id="published"
               control={<Checkbox />}
               label="Publicar al guardar"
               onChange={e => {
                 this.updateCheckBox(e);
               }}
-              checked={this.state.fields["publish"]}
-              value={this.state.fields["publish"]}
+              checked={this.state.fields["published"]}
+              value={this.state.fields["published"]}
             /></div>
 
             <Button type="submit" variant="contained" className={'save-button'}>Guardar</Button>

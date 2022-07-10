@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './components/UserContext';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root')); // TODO: sacar el strict mode al terminar
 root.render(
   <React.StrictMode>
     <UserProvider>

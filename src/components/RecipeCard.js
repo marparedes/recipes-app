@@ -12,7 +12,7 @@ export const RecipeCard = ({ id, title, image, category, score, difficulty }) =>
             component="img"
             height="140"
             image={image}
-            alt="green iguana"
+            alt={title}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
@@ -25,7 +25,7 @@ export const RecipeCard = ({ id, title, image, category, score, difficulty }) =>
         </div>
         <CardActions style={{ justifyContent: 'center' }}>
           <Link to={`/recipes/${id}`} style={{ textDecoration: 'none' }}>
-            <Button size="large">Ver Más</Button>
+            <Button size="large">Ver Detalles</Button>
           </Link>
         </CardActions>
       </Card>

@@ -28,7 +28,7 @@ const recipesMock = [
         category: "Carnes",
         author: "hsimpson",
         score: 5,
-        publish: true,
+        published: true,
         images: ["https://t1.rg.ltmcdn.com/es/posts/2/9/6/vitel_tone_light_75692_paso_2_600.webp", "https://t2.rg.ltmcdn.com/es/posts/2/9/6/vitel_tone_light_75692_600.jpg", "https://t2.rg.ltmcdn.com/es/posts/2/9/6/vitel_tone_light_75692_paso_1_600.webp"]
     },
     {

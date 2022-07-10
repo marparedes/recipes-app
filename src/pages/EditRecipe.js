@@ -73,7 +73,7 @@ function EditRecipe() {
       ingredients: recipeData.ingredients,
       procedure: recipeData.procedure,
       images: recipeData.images,
-      publish: recipeData.publish
+      published: recipeData.published
     },
     handleValidation
   );
@@ -195,12 +195,12 @@ function EditRecipe() {
           <span style={{ color: "red" }}>{errors["images"]}</span>
 
           <div><FormControlLabel
-            id="publish"
+            id="published"
             control={<Checkbox />}
             label="Publicar al guardar"
-            onChange={e => handleChange({ name: 'publish', value: !values["publish"]})}
-            checked={values["publish"]}
-            value={values["publish"]}
+            onChange={e => handleChange({ name: 'published', value: !values["published"]})}
+            checked={values["published"]}
+            value={values["published"]}
           /></div>
 
           <p className="error-message" hidden={!errorMessage} ref={errRef} aria-live="assertive">{errorMessage}</p>
