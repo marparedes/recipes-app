@@ -21,22 +21,7 @@ function Home() {
 
   useEffect(() => {
     const getRecipes = async () => {
-      const url = `${urlWebServices.getRecipes}?page=1&limit=1`;
-      const response = await fetch(url, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-          'Accept': 'application/x-www-form-urlencoded',
-          // 'x-access-token': WebToken.webToken,
-          'Origin': 'http://localhost:3000',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-      });
-      const parsedResponse = await response.json();
-      console.log("Got response:", parsedResponse)
-      setRecipes(parsedResponse.data.docs);
-      setCurrentPage(parseInt(parsedResponse.data.page));
-      setMaxPage(parseInt(parsedResponse.data.pages));
+      await fetchRecipes(currentPage);
     }
     try {
       getRecipes().then().catch((error) => {
