@@ -83,5 +83,5 @@ export const RecipeDetails = ({ recipe }) => {
         </div>
       </div>
     </Box>
-  ) : (<div>Loading...</div>)
+  ) : (<div>Cargando...</div>)
 }

@@ -10,11 +10,11 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [maxPage, setMaxPage] = useState(null);
 
-  const [ingredientQ, setIngredientQ] = useState(null)
-  const [categoryQ, setCategoryQ] = useState("Todos")
-  const [difficultyQ, setDifficultyQ] = useState("Todos")
+  const [ingredientQ, setIngredientQ] = useState(null);
+  const [categoryQ, setCategoryQ] = useState("Todos");
+  const [difficultyQ, setDifficultyQ] = useState("Todos");
 
-  const [recipes, setRecipes] = useState([])
+  const [recipes, setRecipes] = useState([]);
 
   const difficultyMock = ["1", "2", "3", "4", "5"];
 

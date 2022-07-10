@@ -112,7 +112,7 @@ function Recipe() {
             </div>
           </div>
         </div>
-      </Box> : <div>loading...</div>
+      </Box> : <div>Cargando...</div>
     }
   </>
   /* render de RecipeDetails */

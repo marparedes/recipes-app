@@ -1,9 +1,10 @@
 const urlApi = "http://localhost:8081";
 
 const urlWebServices = {
-  getRecipes: `${urlApi}/api/recipes`,
-  getRecipe: `${urlApi}/api/recipes/{id}`,
   login: `${urlApi}/api/login`,
+  getRecipes: `${urlApi}/api/recipes`,
+  getMyRecipes: `${urlApi}/api/my-recipes`,
+  getRecipe: `${urlApi}/api/recipes/{id}`,
   // uploadFileImg: urlApi + "utils/uploadImg",
   // guardarImgUser: urlApi + "api/users/guardarImgUser",
   // getImgUser: urlApi + "api/users/imgUserByMail",
