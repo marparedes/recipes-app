@@ -16,7 +16,6 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { useNavigate } from 'react-router-dom';
 import urlWebServices from '../webServices';
 import { useUserContext } from '../components/UserContext';
-import { RecipeList } from '../components/RecipeList';
 import { AlertMessage } from '../components/AlertMessage';
 
 function MyRecipes() {
@@ -52,7 +51,6 @@ function MyRecipes() {
       },
     });
     const parsedResponse = await response.json();
-    console.log("Got response:", parsedResponse)
     if (response.status === 200) {
       setRecipes(parsedResponse.data);
     }
@@ -63,7 +61,6 @@ function MyRecipes() {
     history(`/my-recipes/${id}`)
   };
   const deleteRecipe = async () => {
-    console.log("Selected id:", selectedId)
     let url = urlWebServices.deleteRecipe.replace('{id}', selectedId);
     try {
       const response = await fetch(url, {
@@ -88,7 +85,6 @@ function MyRecipes() {
 
   const openDialog = async (id) => {
     await setSelectedId(id);
-    console.log("Setting id:", id, selectedId)
     setShowDialog(true);
   }
   const closeDialog = () => {

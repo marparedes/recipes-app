@@ -1,6 +1,4 @@
 import { useParams } from 'react-router-dom'
-import { RecipeDetails } from '../components/RecipeDetails'
-import recipesMock from '../mock/recipes'
 import urlWebServices from '../webServices';
 import React, { useEffect, useState } from 'react'
 import { useUserContext } from '../components/UserContext';

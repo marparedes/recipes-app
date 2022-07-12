@@ -57,7 +57,7 @@ function App() {
               <Route path='new' element={}/>
             */}
             </Routes>
-            <Footer />
+            {/*<Footer />*/}
           </Container>
         </UserProvider>
       </ThemeProvider>
