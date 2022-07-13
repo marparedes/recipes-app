@@ -47,10 +47,9 @@ function App() {
                 </PrivateRoute>
               } />
               <Route path='/my-recipes/new' element={ // TODO: se podría mover a "Mis Recetas" cuando esa sección sea implementada
-
-                //<PrivateRoute> TODO: hacer privado
-                <CreateRecipe />
-                //</PrivateRoute>
+                <PrivateRoute>
+                  <CreateRecipe />
+                </PrivateRoute>
               } />
               {/* <Route path='recipes' element={}>
               <Route path=':recipeId' element={}/>

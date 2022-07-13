@@ -133,7 +133,7 @@ function EditRecipe() {
     await setSuccessMessage('');
     const validationErrors = handleValidation();
     await setErrors(validationErrors);
-    if (Object.keys(validationErrors).length) {
+    if (Object.keys(validationErrors).length > 0) {
       setErrorMessage('Hay campos con errores!');
       return;
     }
@@ -146,7 +146,6 @@ function EditRecipe() {
   }
 
   const handleChange = async data => {
-    console.log("Data:", data)
     const { name, value } = data;
     await setRecipe({
       ...recipe,

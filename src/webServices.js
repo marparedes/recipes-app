@@ -4,6 +4,7 @@ const urlWebServices = {
   login: `${urlApi}/api/login`,
   getRecipes: `${urlApi}/api/recipes`,
   getMyRecipes: `${urlApi}/api/my-recipes`,
+  postRecipe: `${urlApi}/api/recipes`,
   getRecipe: `${urlApi}/api/recipes/{id}`,
   putRecipe: `${urlApi}/api/recipes/{id}`,
   deleteRecipe: `${urlApi}/api/recipes/{id}`,
