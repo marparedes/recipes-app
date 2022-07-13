@@ -10,25 +10,16 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 function Recipe() {
   const { id } = useParams();
-  const [recipe, setRecipe] = useState({})
+  const [recipe, setRecipe] = useState({});
 
   /* cosas de RecipeDetails.js */
   const { user } = useUserContext();
 
-  const [showScoreButton, setShowScoreButton] = useState(true)
-  const [newScore, setNewScore] = useState(0)
+  const [showScoreButton, setShowScoreButton] = useState(false);
+  const [showScoreForm, setShowScoreForm] = useState(false);
 
-  const [score, setScore] = useState(recipe.score)
-
-  const updateScore = () => {
-    var num = (parseFloat(parseFloat(score) + parseFloat(newScore))/2).toFixed(1)
-    setScore(num)
-    setShowScoreButton(!showScoreButton)
-  }
-  /* cosas de RecipeDetails.js */
-
-
-
+  const [averageScore, setAverageScore] = useState(null);
+  const [newScore, setNewScore] = useState(null);
 
   useEffect(() => {
     const getRecipe = async () => {
@@ -51,21 +42,47 @@ function Recipe() {
       mode: 'cors',
       headers: {
         'Accept': 'application/x-www-form-urlencoded',
-        // 'x-access-token': WebToken.webToken,
         'Origin': 'http://localhost:3000',
         'Content-Type': 'application/x-www-form-urlencoded'
       },
     });
     const parsedResponse = await response.json();
-    console.log("Got response:", parsedResponse)
-    setRecipe(parsedResponse.data);
+    await setRecipe(parsedResponse.data);
+    await setAverageScore(parsedResponse.data.averageScore);
+    await setShowScoreButton(!!user && user.username !== parsedResponse.data.author);
   }
 
-  // return recipe !== {} ? (
-  //   <RecipeDetails recipe={recipe}></RecipeDetails>
-  // ) : <p>Loading...</p>
+  const triggerShowScoreButton = async () => {
+    await setShowScoreButton(false);
+    await setShowScoreForm(true);
+  }
 
-  /* render de RecipeDetails */
+  const updateScore = async () => {
+    let url = urlWebServices.postScore.replace('{id}', recipe._id);
+    console.log("SCORE", newScore)
+    const formData = new URLSearchParams();
+    formData.append('score', parseInt(newScore));
+    const response = await fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/x-www-form-urlencoded',
+        'x-access-token': user.token,
+        'Origin': 'http://localhost:3000',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: formData,
+    }).catch((err) => console.log("Problema", err));
+    const parsedResponse = await response.json();
+    if (response.status === 201) {
+      await setAverageScore(parsedResponse.data.averageScore);
+      await setShowScoreForm(false);
+      return;
+    }
+    console.log("response",parsedResponse)
+    throw new Error(`No se pudo calificar la receta: ${parsedResponse.message}`);
+  }
+
   return <>
     { !!recipe ?
       <Box sx={{ flexGrow: 1, margin: 10 }}>
@@ -75,23 +92,30 @@ function Recipe() {
             <div className="recipe-details-half">
               <p className="one-line-recipe-field"><strong>Autor:</strong> {recipe.author}</p>
               {!!recipe._id ? <ImageSlider imageUrls={recipe.images}></ImageSlider> : <></>}
+              {}
               <p className="one-line-recipe-field"><strong>Categoría:</strong> {recipe.category}</p>
-              <p className="one-line-recipe-field"><strong>Calificación:</strong> {score} / 5</p>
+              <p className="one-line-recipe-field"><strong>Calificación:</strong> {averageScore} / 5</p>
 
-              {showScoreButton ?
-                <Button variant='outlined' disabled={!user} onClick={() => setShowScoreButton(!showScoreButton)}>Calificar
-                  receta</Button> :
-                <div className='form-button'>
-                  <TextField
-                    id="newScore"
-                    onChange={(e) => setNewScore(e.target.value)}
-                    value={newScore}
-                    required={true}
-                    type="number"
-                    sx={{ width: "100px" }}
-                  />
-                  <Button variant='outlined' onClick={updateScore} sx={{ margin: "10px" }}>Calificar</Button>
-                </div>
+              {
+                showScoreButton ?
+                  <Button variant='outlined' disabled={!user} onClick={triggerShowScoreButton}>Calificar
+                    receta</Button> :
+                  null
+              }
+              {
+                showScoreForm ?
+                  <div className='form-button'>
+                    <TextField
+                      id="newScore"
+                      onChange={(e) => setNewScore(e.target.value)}
+                      value={newScore}
+                      required={true}
+                      type="number"
+                      sx={{ width: "100px" }}
+                    />
+                    <Button variant='outlined' onClick={updateScore} sx={{ margin: "10px" }}>Calificar</Button>
+                  </div> :
+                  null
               }
             </div>
           </div>

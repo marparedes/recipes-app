@@ -8,6 +8,7 @@ const urlWebServices = {
   getRecipe: `${urlApi}/api/recipes/{id}`,
   putRecipe: `${urlApi}/api/recipes/{id}`,
   deleteRecipe: `${urlApi}/api/recipes/{id}`,
+  postScore: `${urlApi}/api/recipes/{id}/scores`,
   // uploadFileImg: urlApi + "utils/uploadImg",
   // guardarImgUser: urlApi + "api/users/guardarImgUser",
   // getImgUser: urlApi + "api/users/imgUserByMail",
