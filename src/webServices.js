@@ -2,6 +2,7 @@ const urlApi = "http://localhost:8081";
 
 const urlWebServices = {
   login: `${urlApi}/api/login`,
+  postUser: `${urlApi}/api/users`,
   getRecipes: `${urlApi}/api/recipes`,
   getMyRecipes: `${urlApi}/api/my-recipes`,
   postRecipe: `${urlApi}/api/recipes`,

@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import urlWebServices from '../webServices';
 
 function Login() {
-  const { login } = useUserContext()
+  const { login } = useUserContext();
   const history = useNavigate();
 
   const errRef = useRef();
@@ -24,8 +24,6 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-
     const formData = new URLSearchParams();
     formData.append('username', username);
     formData.append('password', password);

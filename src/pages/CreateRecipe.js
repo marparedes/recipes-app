@@ -107,7 +107,7 @@ function CreateRecipe() {
         'Origin': 'http://localhost:3000',
       },
       body: formData,
-    }).catch((err) => console.log("Problema", err));
+    }).catch((err) => console.log(err));
     if (response.status === 201) {
       await setRecipe(getInitializedRecipeData());
       return;

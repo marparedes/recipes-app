@@ -36,7 +36,6 @@ function Recipe() {
 
   const fetchRecipe = async () => {
     let url = urlWebServices.getRecipe.replace('{id}', id);
-    console.log("Using url: ", url)
     const response = await fetch(url, {
       method: 'GET',
       mode: 'cors',
@@ -59,7 +58,6 @@ function Recipe() {
 
   const updateScore = async () => {
     let url = urlWebServices.postScore.replace('{id}', recipe._id);
-    console.log("SCORE", newScore)
     const formData = new URLSearchParams();
     formData.append('score', parseInt(newScore));
     const response = await fetch(url, {
@@ -72,14 +70,13 @@ function Recipe() {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       body: formData,
-    }).catch((err) => console.log("Problema", err));
+    }).catch((err) => console.log(err));
     const parsedResponse = await response.json();
     if (response.status === 201) {
       await setAverageScore(parsedResponse.data.averageScore);
       await setShowScoreForm(false);
       return;
     }
-    console.log("response",parsedResponse)
     throw new Error(`No se pudo calificar la receta: ${parsedResponse.message}`);
   }
 

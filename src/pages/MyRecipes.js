@@ -25,7 +25,6 @@ function MyRecipes() {
   const { user } = useUserContext();
 
   useEffect(() => {
-    console.log("Use Effect start")
     const getRecipes = async () => {
       await fetchRecipes();
     }
@@ -39,7 +38,6 @@ function MyRecipes() {
   }, []);
 
   const fetchRecipes = async () => {
-    console.log("Sending GET with token:", user.token)
     const response = await fetch(urlWebServices.getMyRecipes, {
       method: 'GET',
       mode: 'cors',

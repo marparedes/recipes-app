@@ -8,7 +8,6 @@ const ImageSlider = (receivedImageUrls) => {
 
   useEffect(() => {
     setImageUrls(receivedImageUrls ? receivedImageUrls : []);
-    console.log("imageUrls", receivedImageUrls)
   }, []);
 
   if (!(imageUrls || Array.isArray(imageUrls) || imageUrls.length)) {

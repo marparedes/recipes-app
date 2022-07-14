@@ -37,7 +37,6 @@ function Home() {
     if (!!categoryQ && categoryQ !== "Todos") url += `&category=${categoryQ}`;
     if (!!difficultyQ && difficultyQ !== "Todos") url += `&difficulty=${difficultyQ}`;
     if (!!ingredientQ) url += `&ingredients=${ingredientQ}`;
-    console.log("Using url: ", url)
     const response = await fetch(url, {
       method: 'GET',
       mode: 'cors',
@@ -49,7 +48,6 @@ function Home() {
       },
     });
     const parsedResponse = await response.json();
-    console.log("Got response:", parsedResponse)
     if (parsedResponse.status === 200) {
       setRecipes(currentPage === 1 ? parsedResponse.data.docs : recipes.concat(parsedResponse.data.docs));
       setCurrentPage(parseInt(parsedResponse.data.page));
@@ -57,10 +55,6 @@ function Home() {
       setIsLoaded(true);
     }
   }
-
-  console.log("Re-rendered recipes state:", recipes);
-  console.log("Re-rendered current page state:", currentPage);
-  console.log("Re-rendered max page state:", maxPage);
 
   const handleNewSearch = async () => {
     await fetchRecipes(1);

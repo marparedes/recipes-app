@@ -21,7 +21,6 @@ export const RecipeDetails = ({ recipe }) => {
   })
 
   useEffect(() => {
-    console.log("Recipe:", recipe);
     setRecipeData(recipe);
   });
 
@@ -37,9 +36,6 @@ export const RecipeDetails = ({ recipe }) => {
     setScore(num)
     setShowScoreButton(!showScoreButton)
   }
-
-  console.log("Recipe data", recipeData)
-
 
   return recipeData ? (
     <Box sx={{ flexGrow: 1, margin: 10 }} >
