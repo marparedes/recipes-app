@@ -134,7 +134,7 @@ function EditRecipe() {
     const validationErrors = handleValidation();
     await setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) {
-      setErrorMessage('Hay campos con errores!');
+      setErrorMessage('¡Hay campos con errores!');
       return;
     }
     try {
