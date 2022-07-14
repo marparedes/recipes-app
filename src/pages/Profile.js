@@ -4,16 +4,15 @@ import { useUserContext } from '../components/UserContext';
 import { TextField } from '@mui/material';
 import '../styles/index.css';
 import { Box } from '@mui/system';
-import useForm from './useForm';
 import { useNavigate } from 'react-router-dom';
 import urlWebServices from '../webServices';
 
 function Profile() {
-  const { login } = useUserContext();
   const [userData, setUserData] = useState({
     "firstName": "",
     "lastName": ""
   });
+  const [password, setPassword] = useState('');
 
   const errRef = useRef();
   const successRef = useRef();
@@ -26,6 +25,7 @@ function Profile() {
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [successPasswordMessage, setSuccessPasswordMessage] = useState('');
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
 
   useEffect(() => {
     const getUser = async () => {
@@ -53,7 +53,6 @@ function Profile() {
       },
     });
     const parsedResponse = await response.json();
-    console.log("setting user", parsedResponse)
     await setUserData(parsedResponse);
   }
 
@@ -63,15 +62,6 @@ function Profile() {
       ...userData,
       [name]: value,
     })
-  }
-
-  const handlePasswordValidation = (values) => {
-    let allErrors = {};
-    // Password
-    if (!passwordValues.password) {
-      allErrors.password = 'Se requiere una contraseña';
-    }
-    return allErrors;
   }
 
   const handleValidation = () => {
@@ -89,13 +79,6 @@ function Profile() {
 
     return allErrors;
   }
-
-  const { handleChange: handlePasswordChange, values: passwordValues, handleSubmit: handlePasswordSubmit, errors: passwordErrors } = useForm(
-    {
-      password: ''
-    },
-    handlePasswordValidation
-  );
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -129,7 +112,6 @@ function Profile() {
       body: formData,
     }).catch((err) => console.log(err));
     const parsedResponse = await response.json();
-    console.log("response:", parsedResponse)
     if (response.status === 200) {
       return;
     }
@@ -137,17 +119,42 @@ function Profile() {
     throw new Error(`No se pudo actualizar al usuario: ${parsedResponse.message}`);
   }
 
-  // const submitPasswordForm = async (e) => {
-  //   setSuccessPasswordMessage('');
-  //   e.preventDefault();
-  //   const errors = handlePasswordSubmit(e);
-  //   console.log(errors);
-  //   if (Object.keys(errors).length) {
-  //     return;
-  //   }
-  //   setSuccessPasswordMessage('¡La contraseña fue cambiada!');
-  //   handlePasswordChange({ name: 'password', value: '' })
-  // }
+  const submitPasswordForm = async (e) => {
+    setSuccessPasswordMessage('');
+    e.preventDefault();
+    if (!password) {
+      await setPasswordErrorMessage('Se requiere una contraseña');
+      return;
+    }
+    try {
+      await updateUserPassword();
+      setPasswordErrorMessage('');
+      setSuccessPasswordMessage('¡La contraseña fue cambiada!');
+    } catch (error) {
+      console.log(error);
+      setPasswordErrorMessage(error.message);
+    }
+  }
+
+  const updateUserPassword = async () => {
+    const formData = new URLSearchParams();
+    formData.append('password', password);
+    const response = await fetch(urlWebServices.putNewPassword, {
+      method: 'PUT',
+      mode: 'cors',
+      headers: {
+        'Accept': 'application/form-data',
+        'x-access-token': user.token,
+        'Origin': 'http://localhost:3000',
+      },
+      body: formData,
+    }).catch((err) => console.log(err));
+    if (response.status === 204) {
+      return;
+    }
+    setErrorMessage(response.message);
+    throw new Error(`No se pudo actualizar al usuario: ${response.message}`);
+  }
 
   return (
     <div className={'profile-page'}>
@@ -197,23 +204,23 @@ function Profile() {
           width: '80%',
         }}>
           <h2 className="centered-text">Cambiar contraseña</h2>
-          {/*<form onSubmit={submitPasswordForm}>*/}
-          {/*  <div className={'form-text-field'}>*/}
-          {/*    <p className={'field-name'}>Contraseña</p>*/}
-          {/*    <TextField className={'form-field'}*/}
-          {/*      id="password"*/}
-          {/*      type="password"*/}
-          {/*      onChange={(e) => { handlePasswordChange({ name: 'password', value: e.target.value }); }}*/}
-          {/*      value={passwordValues.password}*/}
-          {/*    />*/}
-          {/*  </div>*/}
-          {/*  <p className={passwordErrors["password"] ? "error-message centered-text" : "hidden"}>{passwordErrors["password"]}</p>*/}
-          {/*  <p className={successPasswordMessage ? "success-message centered-text" : "hidden"} ref={successPasswordRef} aria-live="assertive">{successPasswordMessage}</p>*/}
-          {/*  <br></br>*/}
-          {/*  <div className='form-button'>*/}
-          {/*    <Button type="submit" variant="contained" className={'save-button'}>Guardar cambios</Button>*/}
-          {/*  </div>*/}
-          {/*</form>*/}
+          <form onSubmit={submitPasswordForm}>
+            <div className={'form-text-field'}>
+              <p className={'field-name'}>Contraseña</p>
+              <TextField className={'form-field'}
+                id="password"
+                type="password"
+                onChange={(e) => { setPassword(e.target.value); }}
+                value={password}
+              />
+            </div>
+            <p className={!!passwordErrorMessage ? "error-message centered-text" : "hidden"}>{passwordErrorMessage}</p>
+            <p className={!!successPasswordMessage ? "success-message centered-text" : "hidden"} ref={successPasswordRef} aria-live="assertive">{successPasswordMessage}</p>
+            <br></br>
+            <div className='form-button'>
+              <Button type="submit" variant="contained" className={'save-button'}>Guardar cambios</Button>
+            </div>
+          </form>
         </Box>
       </div>
     </div>

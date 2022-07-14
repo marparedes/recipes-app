@@ -5,6 +5,7 @@ const urlWebServices = {
   getUser: `${urlApi}/api/users`,
   postUser: `${urlApi}/api/users`,
   putUser: `${urlApi}/api/users`,
+  putNewPassword: `${urlApi}/api/users/new-password`,
   getRecipes: `${urlApi}/api/recipes`,
   getMyRecipes: `${urlApi}/api/my-recipes`,
   postRecipe: `${urlApi}/api/recipes`,
