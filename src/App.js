@@ -15,9 +15,8 @@ import EditRecipe from './pages/EditRecipe';
 import { PasswordRecovery } from './pages/PasswordRecovery';
 import { Footer } from './components/Footer';
 import { Container } from './components/Container';
+import Help from './pages/Help';
 
-
-// TODO componente de Ayuda /help
 function App() {
   return (
     <BrowserRouter>
@@ -31,6 +30,7 @@ function App() {
               <Route path='/register' element={<Register />} />
               <Route path='/recipes/:id' element={<Recipe />} />
               <Route path='/password-recovery' element={<PasswordRecovery />} />
+              <Route path='/help' element={<Help />} />
               <Route path='/profile' element={
                 <PrivateRoute>
                   <Profile />

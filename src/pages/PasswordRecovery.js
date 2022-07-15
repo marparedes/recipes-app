@@ -66,14 +66,14 @@ export const PasswordRecovery = () => {
               <p className="success-message" hidden={!requestOngoingMessage} aria-live="assertive">{requestOngoingMessage}</p>
             </div>
           </form>
-        </Box> : <>
-          <AlertMessage message={"Te enviamos un código a tu e-mail para recuperar tu contraseña"} title={"Enviado"} severity={"success"} />
-          <div style={{ textAlign: "center", marginTop: 20 }}>
-            <Link to={'/'} style={{ textDecoration: 'none' }}>
-              <Button>Ir al inicio</Button>
-            </Link>
-          </div>
-        </>}
+          </Box> : <>
+        <AlertMessage message={"Te enviamos una nueva contraseña a tu e-mail. Por favor, revisa tu casilla."} title={"Enviado"} severity={"success"} />
+        <div style={{ textAlign: "center", marginTop: 20 }}>
+          <Link to={'/login'} style={{ textDecoration: 'none' }}>
+            <Button>Iniciar Sesion</Button>
+          </Link>
+        </div>
+      </>}
     </div>
   </>
 }

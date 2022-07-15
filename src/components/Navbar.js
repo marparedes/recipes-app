@@ -21,7 +21,7 @@ const pages = [
   },
   {
     title: 'Ayuda',
-    page: '/'
+    page: 'help'
   }
 ]
 const options = [
@@ -124,7 +124,10 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.title} onClick={()=> {
+                  navigate(`/${page.page}`)
+                  handleCloseNavMenu()
+                  }}>
                   <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
@@ -134,9 +137,9 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, fontFamily:"Lucida Handwriting", fontSize: {xs: 16} }}
           >
-            LOGO
+            Recetas del Mundo
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, paddingLeft: "150px" }}>
             {pages.map((option) => (
