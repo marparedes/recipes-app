@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import urlWebServices from '../webServices';
 import { useUserContext } from '../components/UserContext';
 import { AlertMessage } from '../components/AlertMessage';
@@ -112,7 +112,7 @@ function MyRecipes() {
                   <EditIcon color="primary" onClick={() => editRecipe(row._id)} />
                   <DeleteIcon color="primary" onClick={() => openDialog(row._id)} />
                 </TableCell>
-                <TableCell component="th" scope="row">{row.title}</TableCell>
+                <TableCell component="th" scope="row"><NavLink to={`/recipes/${row._id}`}>{row.title}</NavLink></TableCell>
                 <TableCell >{row.category}</TableCell>
                 <TableCell >{row.averageScore}</TableCell>
                 <TableCell >{row.published ? 'Sí' : 'No'}</TableCell>
