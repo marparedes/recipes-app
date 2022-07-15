@@ -17,6 +17,7 @@ function Recipe() {
   const [showScoreForm, setShowScoreForm] = useState(false);
   const [averageScore, setAverageScore] = useState(null);
   const [newScore, setNewScore] = useState(null);
+  const [scoreMessage, setScoreMessage] = useState('');
 
   useEffect(() => {
     const getRecipe = async () => {
@@ -33,19 +34,21 @@ function Recipe() {
 
   const fetchRecipe = async () => {
     let url = urlWebServices.getRecipe.replace('{id}', id);
+    let headers = {
+      'Accept': 'application/x-www-form-urlencoded',
+      'Origin': 'http://localhost:3000',
+      'Content-Type': 'application/x-www-form-urlencoded'
+    };
+    if (!!user) { headers['x-access-token'] = user.token };
     const response = await fetch(url, {
       method: 'GET',
       mode: 'cors',
-      headers: {
-        'Accept': 'application/x-www-form-urlencoded',
-        'Origin': 'http://localhost:3000',
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
+      headers: headers
     });
     const parsedResponse = await response.json();
     await setRecipe(parsedResponse.data);
     await setAverageScore(parsedResponse.data.averageScore);
-    await setShowScoreButton(!!user && user.username !== parsedResponse.data.author);
+    await setShowScoreButton(parsedResponse.data.canSendScoreForRecipe);
   }
 
   const triggerShowScoreButton = async () => {
@@ -54,6 +57,7 @@ function Recipe() {
   }
 
   const updateScore = async () => {
+    await setScoreMessage('Enviando calificación...');
     let url = urlWebServices.postScore.replace('{id}', recipe._id);
     const formData = new URLSearchParams();
     formData.append('score', parseInt(newScore));
@@ -72,6 +76,7 @@ function Recipe() {
     if (response.status === 201) {
       await setAverageScore(parsedResponse.data.averageScore);
       await setShowScoreForm(false);
+      setScoreMessage('¡La calificación fue enviada!');
       return;
     }
     throw new Error(`No se pudo calificar la receta: ${parsedResponse.message}`);
@@ -86,8 +91,8 @@ function Recipe() {
             <div className="recipe-details-half">
               <p className="one-line-recipe-field"><strong>Autor:</strong> {recipe.author}</p>
               {!!recipe._id ? <ImageSlider imageUrls={recipe.images}></ImageSlider> : <></>}
-              {}
               <p className="one-line-recipe-field"><strong>Categoría:</strong> {recipe.category}</p>
+              <p className="one-line-recipe-field"><strong>Dificultad:</strong> {recipe.difficulty}</p>
               <p className="one-line-recipe-field"><strong>Calificación:</strong> {averageScore} / 5</p>
 
               {
@@ -111,6 +116,7 @@ function Recipe() {
                   </div> :
                   null
               }
+              <p className="success-message" hidden={!scoreMessage} aria-live="assertive">{scoreMessage}</p>
             </div>
           </div>
           <div className="half-container">
