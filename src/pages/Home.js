@@ -33,7 +33,7 @@ function Home() {
 
   const fetchRecipes = async (currentPage) => {
     setIsLoaded(false);
-    let url = `${urlWebServices.getRecipes}?page=${currentPage}&limit=1`;
+    let url = `${urlWebServices.getRecipes}?page=${currentPage}&limit=10`;
     if (!!categoryQ && categoryQ !== "Todos") url += `&category=${categoryQ}`;
     if (!!difficultyQ && difficultyQ !== "Todos") url += `&difficulty=${difficultyQ}`;
     if (!!ingredientQ) url += `&ingredients=${ingredientQ}`;
