@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Recetas del Mundo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción
 
-## Available Scripts
+La aplicación permite registrarse e iniciar sesión, asi como tambien visualizar recetas, navegar a sus detalles y calificarlas, subir recetas y filtrar segun las preferencias del usuario.
 
-In the project directory, you can run:
+En la sección "Ayuda" se podrá visualizar una guia de lo que el usuario puede realizar en la web.
+
+Al clickear sobre el botón "Crear receta" pide llenar un formulario con datos sobre la receta y luego de confirmar se guarda (o se publica, dependiendo que elija el usuario). Se podrá ver el listado de recetas subidas a la web en "Mis recetas", donde el usuario podrá eliminarlas o editarlas cuando quiera.
+
+Tambien en "Perfil" el usuario podrá editar sus datos, incluyendo la contraseña.
+Si el usuario olvida su contraseña puede recurperarla con su nombre de usuario, le llegará un correo a su casilla de email registrado con una contraseña provisoria.
+
+La aplicación permite conectarse con un backend realizado con NodeJS y MongoDB.
+
+**Tecnologías y librerías:**
+
+- Interfaz realizada con **ReactJS - Create React App**
+- Estilos con **Material-UI** y **CSS**
+- Ruteo con **React Router Dom**
+- Backend con **NodeJS**, **MongoDB**, **Express**, **Nodemailer**
+
+## Descargar y correr el proyecto
+
+Una vez clonado o descargado el proyecto, instalar dependencias:
+
+### `npm install`
+
+Correr el servidor:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Se abre una pestaña del navegador en el puerto 3000:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Sino copiar esta URL y pegarla en el navegador: `http://localhost:3000`
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Backend
 
-### `npm run build`
+Tiene un backend realizado con Express, NodeJS y MongoDB, por si quieren descargar y correr este proyecto tienen descargar el codigo en el siguiente repositorio: [Link al repo de Backend](https://github.com/chdigiorno/back-recipes-app)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Estructura
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![estructura] (https://raw.githubusercontent.com/marparedes/recipes-app/main/src/static/project.PNG)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ScreenShots
 
-### `npm run eject`
+Home
+![image00](https://raw.githubusercontent.com/marparedes/recipes-app/main/src/static/home.PNG)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Login                      |  Registro
+:-------------------------:|:-------------------------:
+![image01](https://raw.githubusercontent.com/marparedes/recipes-app/main/src/static/login.PNG)  |  ![image02](https://raw.githubusercontent.com/marparedes/recipes-app/main/src/static/register.PNG)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Listado de recetas subidas por el usuario
+![image03](https://raw.githubusercontent.com/marparedes/recipes-app/main/src/static/myRecipes.PNG)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Opciones para usuario con sesión iniciada
+![image04](https://raw.githubusercontent.com/marparedes/recipes-app/main/src/static/sections.PNG)
