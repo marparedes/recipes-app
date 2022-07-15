@@ -10,14 +10,11 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
 function Recipe() {
   const { id } = useParams();
-  const [recipe, setRecipe] = useState({});
-
-  /* cosas de RecipeDetails.js */
   const { user } = useUserContext();
 
+  const [recipe, setRecipe] = useState({});
   const [showScoreButton, setShowScoreButton] = useState(false);
   const [showScoreForm, setShowScoreForm] = useState(false);
-
   const [averageScore, setAverageScore] = useState(null);
   const [newScore, setNewScore] = useState(null);
 
@@ -121,7 +118,7 @@ function Recipe() {
               <div style={{ display: "inline-block" }}>
                 <section>
                   <h2><RestaurantMenuOutlinedIcon/> Ingredientes</h2>
-                  <p>{recipe.ingredients}</p>
+                  {!!recipe.ingredients ? recipe.ingredients.split('\n').map(e => <p>{e}</p>) : ""}
                 </section>
                 <section>
                   <h2 className="recipe-details-title"><AccessTimeFilledIcon/> Procedimiento</h2>
@@ -134,7 +131,6 @@ function Recipe() {
       </Box> : <div>Cargando...</div>
     }
   </>
-  /* render de RecipeDetails */
 }
 
 export default Recipe;
