@@ -70,7 +70,7 @@ function CreateRecipe() {
   const contactSubmit = async (e) => {
     e.preventDefault();
     await setErrorMessage('');
-    await setSuccessMessage('');
+    await setSuccessMessage('Enviando receta...');
     const validationErrors = handleValidation();
     await setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) {
@@ -79,7 +79,7 @@ function CreateRecipe() {
     }
     try {
       await createRecipe();
-      setSuccessMessage('¡Los cambios fueron guardados!');
+      setSuccessMessage('¡La receta fue creada!');
     } catch (error) {
       console.log(error);
       setErrorMessage('Hubo un problema creando la receta');

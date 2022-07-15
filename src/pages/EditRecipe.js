@@ -101,9 +101,8 @@ function EditRecipe() {
     formData.append('category', recipe.category);
     formData.append('ingredients', recipe.ingredients);
     formData.append('procedure', recipe.procedure);
-    for (let i = 0; i < recipe.images.length; i++)
-    {
-      formData.append('images', recipe.images[i])
+    for (const image of recipe.images) {
+      formData.append('images', image)
     }
     formData.append('published', recipe.published);
     const response = await fetch(url, {
@@ -130,7 +129,7 @@ function EditRecipe() {
   const submitForm = async (e) => {
     e.preventDefault();
     await setErrorMessage('');
-    await setSuccessMessage('');
+    await setSuccessMessage('Enviando cambios...');
     const validationErrors = handleValidation();
     await setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) {
