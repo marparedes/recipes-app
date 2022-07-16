@@ -7,16 +7,18 @@ import ImageSlider from '../components/ImageSlider';
 import { Button, TextField } from '@mui/material';
 import RestaurantMenuOutlinedIcon from '@mui/icons-material/RestaurantMenuOutlined';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import MenuItem from '@mui/material/MenuItem';
 
 function Recipe() {
   const { id } = useParams();
   const { user } = useUserContext();
+  const possibleScores = [1, 2, 3, 4, 5];
 
   const [recipe, setRecipe] = useState({});
   const [showScoreButton, setShowScoreButton] = useState(false);
   const [showScoreForm, setShowScoreForm] = useState(false);
   const [averageScore, setAverageScore] = useState(null);
-  const [newScore, setNewScore] = useState(null);
+  const [newScore, setNewScore] = useState(1);
   const [scoreMessage, setScoreMessage] = useState('');
 
   useEffect(() => {
@@ -96,23 +98,28 @@ function Recipe() {
               <p className="one-line-recipe-field"><strong>Calificación:</strong> {averageScore} / 5</p>
 
               {
-                showScoreButton ?
+                !!showScoreButton ?
                   <Button variant='outlined' disabled={!user} onClick={triggerShowScoreButton}>Calificar
                     receta</Button> :
                   null
               }
               {
                 showScoreForm ?
-                  <div className='form-button'>
-                    <TextField
-                      id="newScore"
-                      onChange={(e) => setNewScore(e.target.value)}
-                      value={newScore}
-                      required={true}
-                      type="number"
-                      sx={{ width: "100px" }}
-                    />
-                    <Button variant='outlined' onClick={updateScore} sx={{ margin: "10px" }}>Calificar</Button>
+                  <div>
+                    <TextField className={'form-field score-list'}
+                               id="newScore"
+                               select
+                               onChange={(e) => setNewScore(e.target.value)}
+                               sx={{ width: "100px" }}
+                               value={newScore}
+                    >
+                      {possibleScores.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                    <Button variant='outlined' className="send-score-button" onClick={updateScore}>Calificar</Button>
                   </div> :
                   null
               }

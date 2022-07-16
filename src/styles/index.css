@@ -224,6 +224,13 @@ footer {
     }
 }
 
+.score-list {
+    width: 70px !important;
+}
+.send-score-button {
+    margin: 10px !important;
+}
+
 .hidden {
     display: none;
 }
