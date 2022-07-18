@@ -19,7 +19,7 @@ export const RecipeCard = ({ id, title, image, category, score, difficulty }) =>
               {title}
             </Typography>
             <p className="recipe-card-field"><strong>Categoría:</strong> {category}</p>
-            <p className="recipe-card-field"><strong>Calificación:</strong> {score}</p>
+            <p className="recipe-card-field"><strong>Calificación:</strong> {!!score ? score : '?'}</p>
             <p className="recipe-card-field"><strong>Dificultad:</strong> {difficulty}</p>
           </CardContent>
         </div>

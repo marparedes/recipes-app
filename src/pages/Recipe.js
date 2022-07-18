@@ -95,7 +95,7 @@ function Recipe() {
               {!!recipe._id ? <ImageSlider imageUrls={recipe.images}></ImageSlider> : <></>}
               <p className="one-line-recipe-field"><strong>Categoría:</strong> {recipe.category}</p>
               <p className="one-line-recipe-field"><strong>Dificultad:</strong> {recipe.difficulty}</p>
-              <p className="one-line-recipe-field"><strong>Calificación:</strong> {averageScore} / 5</p>
+              <p className="one-line-recipe-field"><strong>Calificación:</strong> {!!averageScore ? `${averageScore} / 5` : 'Aún no calificada'}</p>
 
               {
                 !!showScoreButton ?

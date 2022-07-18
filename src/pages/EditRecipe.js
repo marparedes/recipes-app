@@ -242,7 +242,7 @@ function EditRecipe() {
             <Button variant="contained" component="label" color="primary">
               {" "}
               Cargar una nueva imagen
-              <input type="file" name="upload" hidden multiple onChange={fileSelectedHandler} />
+              <input type="file" name="upload" accept="image/png, image/jpg, image/jpeg" hidden multiple onChange={fileSelectedHandler} />
             </Button>
             <p>{recipe["images"] ? recipe["images"].length : 0} nuevas imágenes cargadas (además de las {serverImagesCount} imágenes anteriores)</p>
           </div>
