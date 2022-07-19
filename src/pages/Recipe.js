@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import urlWebServices from '../webServices';
 import React, { useEffect, useState } from 'react'
 import { useUserContext } from '../components/UserContext';
@@ -10,6 +10,7 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import MenuItem from '@mui/material/MenuItem';
 
 function Recipe() {
+  const history = useNavigate();
   const { id } = useParams();
   const { user } = useUserContext();
   const possibleScores = [1, 2, 3, 4, 5];
@@ -47,6 +48,9 @@ function Recipe() {
       mode: 'cors',
       headers: headers
     });
+    if (response.status === 404) {
+      history('/');
+    }
     const parsedResponse = await response.json();
     await setRecipe(parsedResponse.data);
     await setAverageScore(parsedResponse.data.averageScore);
