@@ -63,6 +63,7 @@ Entre las dependencias que contiene el proyecto, se mencionan algunas de las má
 ## Screenshots
 
 Home
+
 ![image00](src/static/home.PNG)
 
 Login                      |  Registro
@@ -70,7 +71,9 @@ Login                      |  Registro
 ![image01](src/static/login.PNG)  |  ![image02](src/static/register.PNG)
 
 Listado de recetas subidas por el usuario
+
 ![image03](src/static/myRecipes.PNG)
 
 Opciones para usuario con sesión iniciada
+
 ![image04](src/static/sections.PNG)
