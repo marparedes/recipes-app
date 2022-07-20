@@ -66,14 +66,17 @@ Home
 
 ![image00](src/static/home.PNG)
 
+________________
 Login                      |  Registro
 :-------------------------:|:-------------------------:
 ![image01](src/static/login.PNG)  |  ![image02](src/static/register.PNG)
 
+________________
 Listado de recetas subidas por el usuario
 
 ![image03](src/static/myRecipes.PNG)
 
+________________
 Opciones para usuario con sesión iniciada
 
 ![image04](src/static/sections.PNG)
